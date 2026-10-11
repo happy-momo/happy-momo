@@ -15,7 +15,7 @@
   <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=happy-momo&layout=compact&theme=tokyonight&hide_border=true&border_radius=12&bg_color=0D1117&title_color=FBBF24&text_color=E2E8F0" alt="Top Languages" width="62%" />
 </div>
 
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=happy-momo&theme=tokyo-night&bg_color=0D1117&color=FBBF24&line=F59E0B&point=FFFFFF&hide_border=true&radius=10" alt="GitHub Activity Graph" width="100%" />
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=happy-momo&theme=tokyo-night&hide_border=true&bg_color=%230D1117&color=%23FBBF24&line=%23F59E0B&point=%23FFFFFF" alt="GitHub Activity Graph" width="100%" />
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/happy-momo/happy-momo/output/github-contribution-grid-snake-dark.svg" />
