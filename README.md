@@ -1,7 +1,5 @@
 <img src="https://raw.githubusercontent.com/happy-momo/happy-momo/main/assets/canvas.svg" alt="Architecting Intelligence" width="100%" />
 
-<p align="center"><sub>Live Telemetry · the machine confesses, in real time</sub></p>
-
 <div align="center">
   <table>
     <tr>
@@ -17,37 +15,33 @@
   <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=happy-momo&layout=compact&theme=tokyonight&hide_border=true&border_radius=12&bg_color=0D1117&title_color=FBBF24&text_color=E2E8F0" alt="Top Languages" width="62%" />
 </div>
 
-<p align="center"><sub>Selected Works · studies in cyber-physical intelligence</sub></p>
+<img src="https://raw.githubusercontent.com/happy-momo/happy-momo/main/dist/github-contribution-grid-snake.svg" alt="Contribution Snake" width="100%" />
 
 <table align="center" width="100%">
   <tr>
-    <td width="50%" valign="top">
-      <p align="center"><strong>⚡ Transformer2Edge</strong></p>
-      <p align="center"><i>low-latency BERT &amp; Transformer runtime for embedded heterogeneous edge nodes</i></p>
-      <p align="center"><sub>sub-10ms quantized inference · zero-leak air-gapped deploy</sub></p>
+    <td width="50%" align="center" valign="top">
+      <p><strong>⚡ Transformer2Edge</strong></p>
+      <p><i>low-latency BERT &amp; Transformer runtime for embedded heterogeneous edge nodes</i></p>
+      <p><sub>sub-10ms quantized inference · zero-leak air-gapped deploy</sub></p>
     </td>
-    <td width="50%" valign="top">
-      <p align="center"><strong>🌐 KG-AI-Builder</strong></p>
-      <p align="center"><i>domain knowledge-graph generation &amp; ontological discovery engine</i></p>
-      <p align="center"><sub>NER/RE extraction · hybrid graph-vector retrieval with LLMs</sub></p>
+    <td width="50%" align="center" valign="top">
+      <p><strong>🌐 KG-AI-Builder</strong></p>
+      <p><i>domain knowledge-graph generation &amp; ontological discovery engine</i></p>
+      <p><sub>NER/RE extraction · hybrid graph-vector retrieval with LLMs</sub></p>
     </td>
   </tr>
   <tr>
-    <td width="50%" valign="top">
-      <p align="center"><strong>⚡ FastME-RAG-Frame</strong></p>
-      <p align="center"><i>asynchronous enterprise RAG for mission-critical industrial specs</i></p>
-      <p align="center"><sub>context-preserving chunking · reranking &amp; hallucination mitigation</sub></p>
+    <td width="50%" align="center" valign="top">
+      <p><strong>⚡ FastME-RAG-Frame</strong></p>
+      <p><i>asynchronous enterprise RAG for mission-critical industrial specs</i></p>
+      <p><sub>context-preserving chunking · reranking &amp; hallucination mitigation</sub></p>
     </td>
-    <td width="50%" valign="top">
-      <p align="center"><strong>📦 MosaicDB &amp; Sentinel</strong></p>
-      <p align="center"><i>unified multi-engine telemetry storage &amp; industrial asset monitoring</i></p>
-      <p align="center"><sub>Go-backed ingestion · Redis caching, InfluxDB metrics, Mongo logs</sub></p>
+    <td width="50%" align="center" valign="top">
+      <p><strong>📦 MosaicDB &amp; Sentinel</strong></p>
+      <p><i>unified multi-engine telemetry storage &amp; industrial asset monitoring</i></p>
+      <p><sub>Go-backed ingestion · Redis caching, InfluxDB metrics, Mongo logs</sub></p>
     </td>
   </tr>
 </table>
-
-<p align="center"><sub>3D Contribution Topography · the cadence of commits, cast in amber geometry</sub></p>
-
-<img src="https://raw.githubusercontent.com/happy-momo/happy-momo/main/profile-3d-contrib/profile-night-rainbow.svg" alt="3D Contribution Graph" width="100%" />
 
 <p align="center"><sub>painted in residence · every commit is a brush stroke · <a href="https://github.com/happy-momo">happy-momo</a></sub></p>
