@@ -21,4 +21,3 @@
   <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/happy-momo/happy-momo/output/github-contribution-grid-snake.svg" width="100%" />
 </picture>
 
-<p align="center"><sub>painted in residence · every commit is a brush stroke · <a href="https://github.com/happy-momo">happy-momo</a></sub></p>
