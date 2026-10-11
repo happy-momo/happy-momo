@@ -1,11 +1,6 @@
-<img src="https://raw.githubusercontent.com/happy-momo/happy-momo/main/assets/hero.svg" alt="Architecting Intelligence" width="100%" />
+<img src="https://raw.githubusercontent.com/happy-momo/happy-momo/main/assets/canvas.svg" alt="Architecting Intelligence" width="100%" />
 
-<img src="https://raw.githubusercontent.com/happy-momo/happy-momo/main/assets/divider.svg" alt="ink trail" width="100%" />
-
-<p align="center">
-  <i>Live Telemetry</i><br/>
-  <sub>the machine confesses, in real time</sub>
-</p>
+<p align="center"><sub>Live Telemetry · the machine confesses, in real time</sub></p>
 
 <div align="center">
   <table>
@@ -22,21 +17,7 @@
   <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=happy-momo&layout=compact&theme=tokyonight&hide_border=true&border_radius=12&bg_color=0D1117&title_color=FBBF24&text_color=E2E8F0" alt="Top Languages" width="62%" />
 </div>
 
-<img src="https://raw.githubusercontent.com/happy-momo/happy-momo/main/assets/divider.svg" alt="ink trail" width="100%" />
-
-<p align="center">
-  <i>The Palette</i><br/>
-  <sub>practiced pigments — each a quiet weight of paint</sub>
-</p>
-
-<img src="https://raw.githubusercontent.com/happy-momo/happy-momo/main/assets/skills.svg" alt="Floating Palette" width="100%" />
-
-<img src="https://raw.githubusercontent.com/happy-momo/happy-momo/main/assets/divider.svg" alt="ink trail" width="100%" />
-
-<p align="center">
-  <i>Selected Works</i><br/>
-  <sub>studies in cyber-physical intelligence</sub>
-</p>
+<p align="center"><sub>Selected Works · studies in cyber-physical intelligence</sub></p>
 
 <table align="center" width="100%">
   <tr>
@@ -65,17 +46,8 @@
   </tr>
 </table>
 
-<img src="https://raw.githubusercontent.com/happy-momo/happy-momo/main/assets/divider.svg" alt="ink trail" width="100%" />
-
-<p align="center">
-  <i>3D Contribution Topography</i><br/>
-  <sub>the cadence of commits, cast in amber geometry</sub>
-</p>
+<p align="center"><sub>3D Contribution Topography · the cadence of commits, cast in amber geometry</sub></p>
 
 <img src="https://raw.githubusercontent.com/happy-momo/happy-momo/main/profile-3d-contrib/profile-night-rainbow.svg" alt="3D Contribution Graph" width="100%" />
-
-<img src="https://raw.githubusercontent.com/happy-momo/happy-momo/main/assets/divider.svg" alt="ink trail" width="100%" />
-
-<img src="https://raw.githubusercontent.com/happy-momo/happy-momo/main/assets/quote.svg" alt="Weight of Steel" width="100%" />
 
 <p align="center"><sub>painted in residence · every commit is a brush stroke · <a href="https://github.com/happy-momo">happy-momo</a></sub></p>

@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" role="img" aria-label="3D Contribution Topography placeholder">
+  <title>3D Contribution Topography — generating</title>
+  <desc>Warm oil-painting placeholder for the 3D contribution graph. Will be replaced by the GitHub Action after first run.</desc>
+
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0a0808"/>
+      <stop offset="1" stop-color="#05060a"/>
+    </linearGradient>
+
+    <linearGradient id="paint" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#F59E0B">
+        <animate attributeName="stop-color" values="#F59E0B;#FBBF24;#FB7185;#F59E0B" dur="8s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="0.5" stop-color="#FBBF24"/>
+      <stop offset="1" stop-color="#FB7185">
+        <animate attributeName="stop-color" values="#FB7185;#FBBF24;#F59E0B;#FB7185" dur="10s" repeatCount="indefinite"/>
+      </stop>
+    </linearGradient>
+
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="60"/>
+    </filter>
+
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="15"/>
+      <feColorMatrix type="matrix"
+          values="0 0 0 0 0.95
+                  0 0 0 0 0.92
+                  0 0 0 0 0.88
+                  0 0 0 0.05 0"/>
+    </filter>
+
+    <filter id="drag" x="-20%" y="-60%" width="140%" height="220%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.014 0.03" numOctaves="3" seed="20"/>
+      <feDisplacementMap in="SourceGraphic" scale="18"/>
+    </filter>
+
+    <radialGradient id="glowA" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#F59E0B" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#05060a" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowB" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#FB7185" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#05060a" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="420" fill="url(#sky)"/>
+
+  <g filter="url(#soft)">
+    <circle cx="200" cy="360" r="260" fill="url(#glowA)">
+      <animateTransform attributeName="transform" type="translate"
+          values="0 0; 30 -20; 0 0" dur="16s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="1000" cy="80" r="240" fill="url(#glowB)">
+      <animateTransform attributeName="transform" type="translate"
+          values="0 0; -25 15; 0 0" dur="19s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Stylised 3D grid silhouette -->
+  <g stroke="url(#paint)" stroke-width="2" stroke-linecap="round" opacity="0.55" fill="none">
+    <path d="M 160 320 L 260 240 L 360 280 L 460 200 L 560 260 L 660 180 L 760 240 L 860 160 L 960 220 L 1060 140">
+      <animate attributeName="stroke-dasharray" values="0 1200;1200 0" dur="3s" fill="freeze"/>
+    </path>
+    <path d="M 160 320 L 260 300 L 360 340 L 460 300 L 560 340 L 660 300 L 760 340 L 860 300 L 960 340 L 1060 300"
+          opacity="0.35"/>
+    <path d="M 260 240 L 260 300 M 360 280 L 360 340 M 460 200 L 460 300 M 560 260 L 560 340 M 660 180 L 660 300 M 760 240 L 760 340 M 860 160 L 860 300 M 960 220 L 960 340"
+          opacity="0.35"/>
+  </g>
+
+  <!-- Topography bars as warm paint blocks -->
+  <g fill="url(#paint)" opacity="0.45">
+    <rect x="230" y="260" width="42" height="90" rx="4">
+      <animate attributeName="height" values="90;110;90" dur="5s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="260;240;260" dur="5s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="330" y="220" width="42" height="130" rx="4">
+      <animate attributeName="height" values="130;155;130" dur="6s" begin="-1s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="220;195;220" dur="6s" begin="-1s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="430" y="180" width="42" height="170" rx="4">
+      <animate attributeName="height" values="170;140;170" dur="5.5s" begin="-2s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="180;210;180" dur="5.5s" begin="-2s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="530" y="240" width="42" height="110" rx="4">
+      <animate attributeName="height" values="110;135;110" dur="6.5s" begin="-0.5s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="240;215;240" dur="6.5s" begin="-0.5s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="630" y="150" width="42" height="200" rx="4">
+      <animate attributeName="height" values="200;170;200" dur="5s" begin="-1.5s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="150;180;150" dur="5s" begin="-1.5s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="730" y="210" width="42" height="140" rx="4">
+      <animate attributeName="height" values="140;165;140" dur="6s" begin="-2.5s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="210;185;210" dur="6s" begin="-2.5s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="830" y="170" width="42" height="180" rx="4">
+      <animate attributeName="height" values="180;150;180" dur="5.5s" begin="-3s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="170;200;170" dur="5.5s" begin="-3s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="930" y="230" width="42" height="120" rx="4">
+      <animate attributeName="height" values="120;145;120" dur="6.5s" begin="-1s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="230;205;230" dur="6.5s" begin="-1s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+
+  <text x="600" y="120" text-anchor="middle"
+        font-family="Georgia, 'Times New Roman', serif" font-style="italic"
+        font-size="34" fill="#FFF7ED" opacity="0.9">
+    3D Contribution Topography
+  </text>
+
+  <text x="600" y="360" text-anchor="middle"
+        font-family="'Courier New', monospace" font-size="15"
+        fill="#B48A6D" letter-spacing="4" opacity="0.8">
+    G E N E R A T I N G   ·   R U N   T H E   A C T I O N
+  </text>
+
+  <g filter="url(#drag)" opacity="0.8">
+    <path d="M 320 390 C 520 400 700 388 880 394" fill="none"
+          stroke="url(#paint)" stroke-width="5" stroke-linecap="round"/>
+  </g>
+
+  <rect width="1200" height="420" filter="url(#grain)" opacity="0.5"/>
+</svg>
