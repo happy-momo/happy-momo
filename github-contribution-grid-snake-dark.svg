@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 824 164" role="img" aria-label="Contribution snake placeholder">
-  <title>Contribution Snake — generating</title>
-  <desc>Warm oil-painting placeholder for the animated contribution snake. Will be replaced by the GitHub Action after first run.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 824 164" role="img" aria-label="Contribution snake dark placeholder">
+  <title>Contribution Snake Dark — generating</title>
+  <desc>Warm oil-painting dark placeholder for the animated contribution snake. Will be replaced by the GitHub Action after first run.</desc>
 
   <defs>
     <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
@@ -23,7 +23,7 @@
     </filter>
 
     <filter id="grain">
-      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="22"/>
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="23"/>
       <feColorMatrix type="matrix"
           values="0 0 0 0 0.95
                   0 0 0 0 0.92
@@ -34,7 +34,6 @@
 
   <rect width="824" height="164" fill="url(#sky)"/>
 
-  <!-- Faint grid -->
   <g fill="#1a1512" opacity="0.5">
     <rect x="34"  y="26" width="12" height="12" rx="2"/>
     <rect x="50"  y="26" width="12" height="12" rx="2"/>
@@ -53,7 +52,6 @@
     <rect x="98"  y="58" width="12" height="12" rx="2"/>
   </g>
 
-  <!-- Glowing snake path -->
   <g filter="url(#soft)">
     <path pathLength="1" d="M 40 92 C 160 92, 200 48, 320 48 S 480 132, 600 132 S 760 48, 900 48 S 1060 132, 1200 132"
           fill="none" stroke="url(#snake)" stroke-width="14" stroke-linecap="round"
@@ -67,13 +65,11 @@
     <animate attributeName="stroke-dashoffset" values="0;-1" dur="5s" repeatCount="indefinite"/>
   </path>
 
-  <!-- Snake head -->
   <circle r="6" fill="#FFF7ED">
     <animateMotion dur="5s" repeatCount="indefinite"
         path="M 40 92 C 160 92, 200 48, 320 48 S 480 132, 600 132 S 760 48, 900 48 S 1060 132, 1200 132"/>
   </circle>
 
-  <!-- Text -->
   <text x="412" y="150" text-anchor="middle"
         font-family="'Courier New', monospace" font-size="11"
         fill="#8b6a58" letter-spacing="3" opacity="0.8">
