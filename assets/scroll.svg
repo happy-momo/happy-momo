@@ -1,17 +1,74 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 2600" width="960" height="2600">
+<style>
+  /* ═══ 入场动画（只播一次） ═══ */
+  .fade-in   { animation: fadeIn 1.4s ease-out forwards; opacity: 0; }
+  .fade-in-d { animation: fadeIn 1.2s ease-out forwards; opacity: 0; }
+  .rise-in   { animation: riseIn 1.2s ease-out forwards; opacity: 0; }
+
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes riseIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* 延迟工具类 */
+  .d02 { animation-delay: 0.2s; } .d04 { animation-delay: 0.4s; }
+  .d06 { animation-delay: 0.6s; } .d08 { animation-delay: 0.8s; }
+  .d10 { animation-delay: 1.0s; } .d12 { animation-delay: 1.2s; }
+  .d14 { animation-delay: 1.4s; } .d16 { animation-delay: 1.6s; }
+  .d18 { animation-delay: 1.8s; } .d20 { animation-delay: 2.0s; }
+  .d22 { animation-delay: 2.2s; } .d25 { animation-delay: 2.5s; }
+  .d28 { animation-delay: 2.8s; } .d31 { animation-delay: 3.1s; }
+  .d34 { animation-delay: 3.4s; } .d37 { animation-delay: 3.7s; }
+  .d40 { animation-delay: 4.0s; } .d43 { animation-delay: 4.3s; }
+  .d46 { animation-delay: 4.6s; } .d49 { animation-delay: 4.9s; }
+  .d52 { animation-delay: 5.2s; } .d56 { animation-delay: 5.6s; }
+  .d59 { animation-delay: 5.9s; } .d62 { animation-delay: 6.2s; }
+  .d65 { animation-delay: 6.5s; } .d68 { animation-delay: 6.8s; }
+  .d72 { animation-delay: 7.2s; } .d76 { animation-delay: 7.6s; }
+  .d80 { animation-delay: 8.0s; }
+
+  /* ═══ 循环动画（环境光） ═══ */
+  .breathe   { animation: breathe 7s ease-in-out infinite; }
+  .frame-pulse { animation: framePulse 9s ease-in-out infinite; }
+  .sheen     { animation: sheen 9s ease-in-out infinite; }
+
+  @keyframes breathe { 0%,100% { opacity: 0.015; } 50% { opacity: 0.05; } }
+  @keyframes framePulse { 0%,100% { opacity: 0.35; } 50% { opacity: 0.55; } }
+  @keyframes sheen { 0%,100% { transform: translateX(-80px); } 50% { transform: translateX(80px); } }
+
+  /* ═══ 粒子漂浮 ═══ */
+  .mote-a { animation: floatA 14s ease-in-out infinite; }
+  .mote-b { animation: floatB 17s ease-in-out infinite; }
+  .mote-c { animation: floatC 12s ease-in-out infinite; }
+  .mote-d { animation: floatD 16s ease-in-out infinite; }
+  .mote-e { animation: floatE 13s ease-in-out infinite; }
+  .mote-f { animation: floatF 15s ease-in-out infinite; }
+
+  @keyframes floatA { 0%,100% { transform: translateY(0); opacity: 0.15; } 50% { transform: translateY(-70px); opacity: 0.65; } }
+  @keyframes floatB { 0%,100% { transform: translateY(0); opacity: 0.10; } 50% { transform: translateY(-60px); opacity: 0.55; } }
+  @keyframes floatC { 0%,100% { transform: translateY(0); opacity: 0.15; } 50% { transform: translateY(-65px); opacity: 0.60; } }
+  @keyframes floatD { 0%,100% { transform: translateY(0); opacity: 0.10; } 50% { transform: translateY(-55px); opacity: 0.50; } }
+  @keyframes floatE { 0%,100% { transform: translateY(0); opacity: 0.12; } 50% { transform: translateY(-65px); opacity: 0.58; } }
+  @keyframes floatF { 0%,100% { transform: translateY(0); opacity: 0.10; } 50% { transform: translateY(-60px); opacity: 0.52; } }
+
+  /* ═══ 分隔线生长 ═══ */
+  .rule-grow { stroke-dasharray: 370 370; stroke-dashoffset: 370; animation: grow 1.2s ease-out forwards; }
+  @keyframes grow { to { stroke-dashoffset: 0; } }
+
+  /* ═══ 涡卷圆点呼吸 ═══ */
+  .vol-dot { animation: pulse 4s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { r: 1.4; } 50% { r: 2.3; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fade-in, .fade-in-d, .rise-in, .breathe, .frame-pulse, .sheen,
+    .mote-a, .mote-b, .mote-c, .mote-d, .mote-e, .mote-f,
+    .rule-grow, .vol-dot { animation: none !important; opacity: 1 !important; }
+  }
+</style>
+
 <defs>
-  <!-- ═══ 巴洛克色板 ═══ -->
   <radialGradient id="candle" cx="28%" cy="6%" r="55%">
     <stop offset="0%" stop-color="#E8D4AA" stop-opacity="0.10"/>
     <stop offset="55%" stop-color="#1A1408" stop-opacity="0"/>
   </radialGradient>
-  <linearGradient id="sheen" x1="0" y1="0" x2="0.4" y2="0">
-    <stop offset="0" stop-color="#F4E4C1" stop-opacity="0"/>
-    <stop offset="0.5" stop-color="#F4E4C1" stop-opacity="0.30"/>
-    <stop offset="1" stop-color="#F4E4C1" stop-opacity="0"/>
-    <animate attributeName="x1" values="-0.6;1.4" dur="9s" repeatCount="indefinite"/>
-    <animate attributeName="x2" values="-0.2;1.8" dur="9s" repeatCount="indefinite"/>
-  </linearGradient>
   <linearGradient id="rule" x1="0" y1="0" x2="1" y2="0">
     <stop offset="0" stop-color="#8A6A2A" stop-opacity="0"/>
     <stop offset="0.5" stop-color="#B8922A" stop-opacity="0.7"/>
@@ -25,349 +82,197 @@
     <feGaussianBlur stdDeviation="3" result="b"/>
     <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
   </filter>
-  <!-- 涡卷节点 -->
   <g id="vol">
     <path d="M0,0 C7,-11 20,-11 22,0 C24,9 13,15 6,9 C0,5 2,-2 7,-2"
           fill="none" stroke="#B8922A" stroke-width="1.1" opacity="0.7"/>
-    <circle cx="7" cy="-2" r="1.7" fill="#E8D4AA">
-      <animate attributeName="r" values="1.4;2.3;1.4" dur="4s" repeatCount="indefinite"/>
-    </circle>
+    <circle class="vol-dot" cx="7" cy="-2" r="1.7" fill="#E8D4AA"/>
   </g>
-  <!-- 拱形弧线（供引用文字使用） -->
   <path id="arc" d="M 170 1720 Q 480 1656 790 1720" fill="none"/>
 </defs>
 
-<!-- ═══ 基底 ═══ -->
+<!-- 基底 -->
 <rect width="960" height="2600" fill="#0D0B08"/>
 <rect width="960" height="2600" fill="url(#candle)"/>
 <rect width="960" height="2600" filter="url(#grain)" opacity="0.03"/>
-<!-- 烛光呼吸 -->
-<rect width="960" height="2600" fill="#B8922A" opacity="0.03">
-  <animate attributeName="opacity" values="0.015;0.05;0.015" dur="7s" repeatCount="indefinite"/>
-</rect>
+<rect class="breathe" width="960" height="2600" fill="#B8922A"/>
 
-<!-- ═══ 双层画框 ═══ -->
-<rect x="22" y="22" width="916" height="2556" fill="none" stroke="#8A6A2A" stroke-width="1" opacity="0.45">
-  <animate attributeName="opacity" values="0.35;0.55;0.35" dur="9s" repeatCount="indefinite"/>
-</rect>
+<!-- 画框 -->
+<rect class="frame-pulse" x="22" y="22" width="916" height="2556" fill="none" stroke="#8A6A2A" stroke-width="1"/>
 <rect x="32" y="32" width="896" height="2536" fill="none" stroke="#B8922A" stroke-width="0.6" opacity="0.3" stroke-dasharray="2 7"/>
 <use href="#vol" x="22" y="22" transform="translate(22,22) scale(1.5)"/>
 <use href="#vol" x="938" y="22" transform="translate(938,22) scale(-1.5,1.5)"/>
 <use href="#vol" x="22" y="2578" transform="translate(22,2578) scale(1.5,-1.5)"/>
 <use href="#vol" x="938" y="2578" transform="translate(938,2578) scale(-1.5,-1.5)"/>
 
-<!-- ═══ 边缘粒子（暗部散射） ═══ -->
+<!-- 粒子 -->
 <g fill="#F4E4C1">
-  <circle cx="90" cy="240" r="1.5" opacity="0.5"><animate attributeName="cy" values="240;170;240" dur="14s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.15;0.65;0.15" dur="14s" repeatCount="indefinite"/></circle>
-  <circle cx="880" cy="520" r="1.3" opacity="0.4"><animate attributeName="cy" values="520;450;520" dur="17s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.1;0.55;0.1" dur="17s" repeatCount="indefinite"/></circle>
-  <circle cx="70" cy="880" r="1.6" fill="#C49A6A" opacity="0.45"><animate attributeName="cy" values="880;810;880" dur="12s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.15;0.6;0.15" dur="12s" repeatCount="indefinite"/></circle>
-  <circle cx="900" cy="1240" r="1.4" fill="#4A5A2A" opacity="0.4"><animate attributeName="cy" values="1240;1180;1240" dur="16s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.1;0.5;0.1" dur="16s" repeatCount="indefinite"/></circle>
-  <circle cx="80" cy="1620" r="1.5" opacity="0.4"><animate attributeName="cy" values="1620;1550;1620" dur="13s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.12;0.58;0.12" dur="13s" repeatCount="indefinite"/></circle>
-  <circle cx="890" cy="2020" r="1.3" fill="#C49A6A" opacity="0.4"><animate attributeName="cy" values="2020;1950;2020" dur="15s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.1;0.52;0.1" dur="15s" repeatCount="indefinite"/></circle>
+  <circle class="mote-a" cx="90" cy="240" r="1.5" opacity="0.5"/>
+  <circle class="mote-b" cx="880" cy="520" r="1.3" opacity="0.4"/>
+  <circle class="mote-c" cx="70" cy="880" r="1.6" fill="#C49A6A" opacity="0.45"/>
+  <circle class="mote-d" cx="900" cy="1240" r="1.4" fill="#4A5A2A" opacity="0.4"/>
+  <circle class="mote-e" cx="80" cy="1620" r="1.5" opacity="0.4"/>
+  <circle class="mote-f" cx="890" cy="2020" r="1.3" fill="#C49A6A" opacity="0.4"/>
 </g>
 
-<!-- ═══════════════════════════════════════════
-     HERO
-     ═══════════════════════════════════════════ -->
+<!-- HERO -->
 <g text-anchor="middle">
   <use href="#vol" x="480" y="72" transform="translate(480,72) scale(1.3)"/>
-  <text x="480" y="168" font-family="'Cinzel','Trajan Pro','Palatino Linotype','Book Antiqua','Times New Roman',serif"
-        font-size="56" font-weight="700" fill="#E8D4AA" letter-spacing="9" filter="url(#halo)">
-    HAPPY-MOMO
-    <animate attributeName="opacity" from="0" to="1" dur="1.6s" begin="0.2s" fill="freeze"/>
-  </text>
-  <line x1="200" y1="196" x2="200" y2="196" stroke="url(#rule)" stroke-width="1">
-    <animate attributeName="x2" from="200" to="760" dur="1.8s" begin="0.4s" fill="freeze"/>
-  </line>
-  <text x="480" y="238" font-family="'Songti SC','STSong','SimSun','Noto Serif CJK SC',serif"
-        font-size="21" fill="#B8922A" letter-spacing="7" opacity="0">
-    以工业为根 · 以系统为骨 · 以智能为魂
-    <animate attributeName="opacity" to="0.95" dur="1.4s" begin="1.0s" fill="freeze"/>
-  </text>
-  <text x="480" y="270" font-family="'Cormorant Garamond','Garamond',Georgia,serif"
-        font-size="14" fill="#C49A6A" font-style="italic" letter-spacing="2" opacity="0">
-    Where the factory floor meets the reasoning layer
-    <animate attributeName="opacity" to="0.8" dur="1.4s" begin="1.3s" fill="freeze"/>
+  <text class="fade-in d02" x="480" y="168" font-family="Cinzel, Trajan Pro, Palatino Linotype, Book Antiqua, Times New Roman, serif"
+        font-size="56" font-weight="700" fill="#E8D4AA" letter-spacing="9" filter="url(#halo)">HAPPY-MOMO</text>
+  <line class="rule-grow d04" x1="200" y1="196" x2="760" y2="196" stroke="url(#rule)" stroke-width="1"/>
+  <text class="fade-in d10" x="480" y="238" font-family="Songti SC, STSong, SimSun, Noto Serif CJK SC, serif"
+        font-size="21" fill="#B8922A" letter-spacing="7">以工业为根 · 以系统为骨 · 以智能为魂</text>
+  <text class="fade-in d13" x="480" y="270" font-family="Cormorant Garamond, Garamond, Georgia, serif"
+        font-size="14" fill="#C49A6A" font-style="italic" letter-spacing="2">Where the factory floor meets the reasoning layer</text>
+</g>
+<rect class="sheen" x="160" y="118" width="640" height="66" fill="#F4E4C1" opacity="0.06"/>
+
+<!-- 分隔 01 -->
+<line class="rule-grow d14" x1="480" y1="330" x2="850" y2="330" stroke="#8A6A2A" stroke-width="0.8"/>
+<line class="rule-grow d14" x1="480" y1="330" x2="110" y2="330" stroke="#8A6A2A" stroke-width="0.8"/>
+<use href="#vol" x="480" y="330" transform="translate(480,330) scale(0.85)"/>
+
+<!-- ABOUT -->
+<text class="fade-in d16" x="110" y="392" font-family="Songti SC, STSong, SimSun, serif" font-size="44" fill="#B8922A">序</text>
+<text class="fade-in d17" x="172" y="382" font-family="Cinzel, Trajan Pro, Times New Roman, serif" font-size="11" fill="#8A6A2A" letter-spacing="5">A B O U T</text>
+<text class="fade-in d19" x="110" y="452" font-family="Cinzel, Trajan Pro, Times New Roman, serif" font-size="58" fill="#E8D4AA">I</text>
+<text class="fade-in d20" font-family="Cormorant Garamond, Garamond, Georgia, serif" font-size="17" fill="#E8D4AA">
+  <tspan x="158" y="440">began in mechanical and vehicle engineering — a discipline</tspan>
+  <tspan x="158" y="466">that instils respect for physical constraints, engineering</tspan>
+  <tspan x="158" y="492">tolerance, and the weight of a real manufacturing process.</tspan>
+</text>
+<text class="fade-in d22" font-family="Cormorant Garamond, Garamond, Georgia, serif" font-size="17" fill="#E8D4AA">
+  <tspan x="110" y="538">A pivot into knowledge management, NLP, and knowledge</tspan>
+  <tspan x="110" y="564">graphs surfaced a more fundamental question:</tspan>
+</text>
+<text class="fade-in d25" font-family="Cormorant Garamond, Garamond, Georgia, serif" font-size="19" fill="#B8922A" font-style="italic">
+  <tspan x="110" y="616">How does industrial knowledge get structured, organized,</tspan>
+  <tspan x="110" y="646">and reused — and ultimately put to work by intelligent systems?</tspan>
+</text>
+<text class="fade-in d28" font-family="Cormorant Garamond, Garamond, Georgia, serif" font-size="17" fill="#E8D4AA">
+  <tspan x="110" y="698">I now operate at the seam between OT and IT: fluent in the</tspan>
+  <tspan x="110" y="724">realities of the shop floor, capable of architecting the software</tspan>
+  <tspan x="110" y="750">backbone, and able to land AI methods inside genuine settings.</tspan>
+</text>
+<text class="fade-in d31" font-family="Cormorant Garamond, Garamond, Georgia, serif" font-size="17" fill="#C49A6A" font-style="italic">
+  <tspan x="110" y="806">Integration is only the starting line. Whether something can</tspan>
+  <tspan x="110" y="832">be built, and whether it deserves to be built, are distinct</tspan>
+  <tspan x="110" y="858">questions. The first is answered by capability. The second,</tspan>
+  <tspan x="110" y="884">by taste.</tspan>
+</text>
+
+<!-- 分隔 02 -->
+<line class="rule-grow d32" x1="480" y1="930" x2="850" y2="930" stroke="#8A6A2A" stroke-width="0.8"/>
+<line class="rule-grow d32" x1="480" y1="930" x2="110" y2="930" stroke="#8A6A2A" stroke-width="0.8"/>
+<use href="#vol" x="480" y="930" transform="translate(480,930) scale(0.85)"/>
+
+<!-- CRAFT -->
+<text class="fade-in d34" x="110" y="992" font-family="Songti SC, STSong, SimSun, serif" font-size="44" fill="#B8922A">意</text>
+<text class="fade-in d35" x="172" y="982" font-family="Cinzel, Trajan Pro, Times New Roman, serif" font-size="11" fill="#8A6A2A" letter-spacing="5">W H A T  I  C A R E  A B O U T</text>
+
+<g class="rise-in d37">
+  <text x="110" y="1050" font-family="Cinzel, Trajan Pro, Times New Roman, serif" font-size="18" fill="#8B2A2A">Ⅰ</text>
+  <text x="146" y="1050" font-family="Cinzel, Trajan Pro, Times New Roman, serif" font-size="13" fill="#E8D4AA" letter-spacing="3">CREATIVITY</text>
+  <text font-family="Cormorant Garamond, Garamond, Georgia, serif" font-size="16" fill="#C49A6A">
+    <tspan x="146" y="1078">Locating room inside constraints, structure inside complexity,</tspan>
+    <tspan x="146" y="1102">and the abstractions worth preserving inside repetition.</tspan>
   </text>
 </g>
-<!-- 名字上的光泽扫过 -->
-<rect x="160" y="118" width="640" height="66" fill="url(#sheen)" opacity="0.55"/>
+<line x1="146" y1="1124" x2="820" y2="1124" stroke="#8A6A2A" stroke-width="0.5" opacity="0.35"/>
 
-<!-- ═══ 分隔 01 ═══ -->
-<g>
-  <line x1="480" y1="330" x2="480" y2="330" stroke="#8A6A2A" stroke-width="0.8">
-    <animate attributeName="x2" from="480" to="850" dur="1.2s" begin="1.4s" fill="freeze"/>
-  </line>
-  <line x1="480" y1="330" x2="480" y2="330" stroke="#8A6A2A" stroke-width="0.8">
-    <animate attributeName="x2" from="480" to="110" dur="1.2s" begin="1.4s" fill="freeze"/>
-  </line>
-  <use href="#vol" x="480" y="330" transform="translate(480,330) scale(0.85)"/>
-</g>
-
-<!-- ═══════════════════════════════════════════
-     ABOUT · 「序」
-     ═══════════════════════════════════════════ -->
-<g>
-  <text x="110" y="392" font-family="'Songti SC','STSong','SimSun',serif"
-        font-size="44" fill="#B8922A" opacity="0">序
-    <animate attributeName="opacity" to="0.9" dur="1s" begin="1.6s" fill="freeze"/>
-  </text>
-  <text x="172" y="382" font-family="'Cinzel','Trajan Pro','Times New Roman',serif"
-        font-size="11" fill="#8A6A2A" letter-spacing="5" opacity="0">A B O U T
-    <animate attributeName="opacity" to="0.85" dur="1s" begin="1.7s" fill="freeze"/>
-  </text>
-  <!-- 首字下沉 -->
-  <text x="110" y="452" font-family="'Cinzel','Trajan Pro','Times New Roman',serif"
-        font-size="58" fill="#E8D4AA" opacity="0">I
-    <animate attributeName="opacity" to="0.9" dur="1s" begin="1.9s" fill="freeze"/>
-  </text>
-  <text font-family="'Cormorant Garamond','Garamond',Georgia,serif" font-size="17" fill="#E8D4AA" opacity="0">
-    <animate attributeName="opacity" to="0.82" dur="1.2s" begin="2.0s" fill="freeze"/>
-    <tspan x="158" y="440">began in mechanical and vehicle engineering — a discipline</tspan>
-    <tspan x="158" y="466">that instils respect for physical constraints, engineering</tspan>
-    <tspan x="158" y="492">tolerance, and the weight of a real manufacturing process.</tspan>
-  </text>
-  <text font-family="'Cormorant Garamond','Garamond',Georgia,serif" font-size="17" fill="#E8D4AA" opacity="0">
-    <animate attributeName="opacity" to="0.82" dur="1.2s" begin="2.2s" fill="freeze"/>
-    <tspan x="110" y="538">A pivot into knowledge management, NLP, and knowledge</tspan>
-    <tspan x="110" y="564">graphs surfaced a more fundamental question:</tspan>
-  </text>
-  <text font-family="'Cormorant Garamond','Garamond',Georgia,serif" font-size="19" fill="#B8922A" font-style="italic" opacity="0">
-    <animate attributeName="opacity" to="0.95" dur="1.2s" begin="2.5s" fill="freeze"/>
-    <tspan x="110" y="616">How does industrial knowledge get structured, organized,</tspan>
-    <tspan x="110" y="646">and reused — and ultimately put to work by intelligent systems?</tspan>
-  </text>
-  <text font-family="'Cormorant Garamond','Garamond',Georgia,serif" font-size="17" fill="#E8D4AA" opacity="0">
-    <animate attributeName="opacity" to="0.8" dur="1.2s" begin="2.8s" fill="freeze"/>
-    <tspan x="110" y="698">I now operate at the seam between OT and IT: fluent in the</tspan>
-    <tspan x="110" y="724">realities of the shop floor, capable of architecting the software</tspan>
-    <tspan x="110" y="750">backbone, and able to land AI methods inside genuine settings.</tspan>
-  </text>
-  <text font-family="'Cormorant Garamond','Garamond',Georgia,serif" font-size="17" fill="#C49A6A" font-style="italic" opacity="0">
-    <animate attributeName="opacity" to="0.8" dur="1.2s" begin="3.1s" fill="freeze"/>
-    <tspan x="110" y="806">Integration is only the starting line. Whether something can</tspan>
-    <tspan x="110" y="832">be built, and whether it deserves to be built, are distinct</tspan>
-    <tspan x="110" y="858">questions. The first is answered by capability. The second,</tspan>
-    <tspan x="110" y="884">by taste.</tspan>
+<g class="rise-in d40">
+  <text x="110" y="1158" font-family="Cinzel, Trajan Pro, Times New Roman, serif" font-size="18" fill="#8B2A2A">Ⅱ</text>
+  <text x="146" y="1158" font-family="Cinzel, Trajan Pro, Times New Roman, serif" font-size="13" fill="#E8D4AA" letter-spacing="3">AGENCY</text>
+  <text font-family="Cormorant Garamond, Garamond, Georgia, serif" font-size="16" fill="#C49A6A">
+    <tspan x="146" y="1186">Defining the problem where no one asked, then carrying it</tspan>
+    <tspan x="146" y="1210">through to a result that holds.</tspan>
   </text>
 </g>
+<line x1="146" y1="1232" x2="820" y2="1232" stroke="#8A6A2A" stroke-width="0.5" opacity="0.35"/>
 
-<!-- ═══ 分隔 02 ═══ -->
-<g>
-  <line x1="480" y1="930" x2="480" y2="930" stroke="#8A6A2A" stroke-width="0.8">
-    <animate attributeName="x2" from="480" to="850" dur="1s" begin="3.2s" fill="freeze"/>
-  </line>
-  <line x1="480" y1="930" x2="480" y2="930" stroke="#8A6A2A" stroke-width="0.8">
-    <animate attributeName="x2" from="480" to="110" dur="1s" begin="3.2s" fill="freeze"/>
-  </line>
-  <use href="#vol" x="480" y="930" transform="translate(480,930) scale(0.85)"/>
+<g class="rise-in d43">
+  <text x="110" y="1266" font-family="Cinzel, Trajan Pro, Times New Roman, serif" font-size="18" fill="#8B2A2A">Ⅲ</text>
+  <text x="146" y="1266" font-family="Cinzel, Trajan Pro, Times New Roman, serif" font-size="13" fill="#E8D4AA" letter-spacing="3">TASTE</text>
+  <text font-family="Cormorant Garamond, Garamond, Georgia, serif" font-size="16" fill="#C49A6A">
+    <tspan x="146" y="1294">What remains after reading widely, building for years, and</tspan>
+    <tspan x="146" y="1318">cutting ruthlessly. Code is material; the system is the work.</tspan>
+  </text>
 </g>
+<line x1="146" y1="1340" x2="820" y2="1340" stroke="#8A6A2A" stroke-width="0.5" opacity="0.35"/>
 
-<!-- ═══════════════════════════════════════════
-     CRAFT · 「意」
-     ═══════════════════════════════════════════ -->
-<g>
-  <text x="110" y="992" font-family="'Songti SC','STSong','SimSun',serif"
-        font-size="44" fill="#B8922A" opacity="0">意
-    <animate attributeName="opacity" to="0.9" dur="1s" begin="3.4s" fill="freeze"/>
-  </text>
-  <text x="172" y="982" font-family="'Cinzel','Trajan Pro','Times New Roman',serif"
-        font-size="11" fill="#8A6A2A" letter-spacing="5" opacity="0">W H A T &nbsp; I &nbsp; C A R E &nbsp; A B O U T
-    <animate attributeName="opacity" to="0.85" dur="1s" begin="3.5s" fill="freeze"/>
-  </text>
-
-  <!-- Ⅰ CREATIVITY -->
-  <g opacity="0">
-    <animate attributeName="opacity" to="1" dur="1s" begin="3.7s" fill="freeze"/>
-    <text x="110" y="1050" font-family="'Cinzel','Trajan Pro','Times New Roman',serif"
-          font-size="18" fill="#8B2A2A" letter-spacing="2">Ⅰ</text>
-    <text x="146" y="1050" font-family="'Cinzel','Trajan Pro','Times New Roman',serif"
-          font-size="13" fill="#E8D4AA" letter-spacing="3">CREATIVITY</text>
-    <text font-family="'Cormorant Garamond','Garamond',Georgia,serif" font-size="16" fill="#C49A6A">
-      <tspan x="146" y="1078">Locating room inside constraints, structure inside complexity,</tspan>
-      <tspan x="146" y="1102">and the abstractions worth preserving inside repetition.</tspan>
-    </text>
-  </g>
-  <line x1="146" y1="1124" x2="820" y2="1124" stroke="#8A6A2A" stroke-width="0.5" opacity="0.35"/>
-
-  <!-- Ⅱ AGENCY -->
-  <g opacity="0">
-    <animate attributeName="opacity" to="1" dur="1s" begin="4.0s" fill="freeze"/>
-    <text x="110" y="1158" font-family="'Cinzel','Trajan Pro','Times New Roman',serif"
-          font-size="18" fill="#8B2A2A" letter-spacing="2">Ⅱ</text>
-    <text x="146" y="1158" font-family="'Cinzel','Trajan Pro','Times New Roman',serif"
-          font-size="13" fill="#E8D4AA" letter-spacing="3">AGENCY</text>
-    <text font-family="'Cormorant Garamond','Garamond',Georgia,serif" font-size="16" fill="#C49A6A">
-      <tspan x="146" y="1186">Defining the problem where no one asked, then carrying it</tspan>
-      <tspan x="146" y="1210">through to a result that holds.</tspan>
-    </text>
-  </g>
-  <line x1="146" y1="1232" x2="820" y2="1232" stroke="#8A6A2A" stroke-width="0.5" opacity="0.35"/>
-
-  <!-- Ⅲ TASTE -->
-  <g opacity="0">
-    <animate attributeName="opacity" to="1" dur="1s" begin="4.3s" fill="freeze"/>
-    <text x="110" y="1266" font-family="'Cinzel','Trajan Pro','Times New Roman',serif"
-          font-size="18" fill="#8B2A2A" letter-spacing="2">Ⅲ</text>
-    <text x="146" y="1266" font-family="'Cinzel','Trajan Pro','Times New Roman',serif"
-          font-size="13" fill="#E8D4AA" letter-spacing="3">TASTE</text>
-    <text font-family="'Cormorant Garamond','Garamond',Georgia,serif" font-size="16" fill="#C49A6A">
-      <tspan x="146" y="1294">What remains after reading widely, building for years, and</tspan>
-      <tspan x="146" y="1318">cutting ruthlessly. Code is material; the system is the work.</tspan>
-    </text>
-  </g>
-  <line x1="146" y1="1340" x2="820" y2="1340" stroke="#8A6A2A" stroke-width="0.5" opacity="0.35"/>
-
-  <!-- Ⅳ APPLIED AI -->
-  <g opacity="0">
-    <animate attributeName="opacity" to="1" dur="1s" begin="4.6s" fill="freeze"/>
-    <text x="110" y="1374" font-family="'Cinzel','Trajan Pro','Times New Roman',serif"
-          font-size="18" fill="#8B2A2A" letter-spacing="2">Ⅳ</text>
-    <text x="146" y="1374" font-family="'Cinzel','Trajan Pro','Times New Roman',serif"
-          font-size="13" fill="#E8D4AA" letter-spacing="3">APPLIED AI</text>
-    <text font-family="'Cormorant Garamond','Garamond',Georgia,serif" font-size="16" fill="#C49A6A">
-      <tspan x="146" y="1402">Placing the technology inside real constraints and asking</tspan>
-      <tspan x="146" y="1426">whose actual problem it solved.</tspan>
-    </text>
-  </g>
-</g>
-
-<!-- ═══ 分隔 03 ═══ -->
-<g>
-  <line x1="480" y1="1470" x2="480" y2="1470" stroke="#8A6A2A" stroke-width="0.8">
-    <animate attributeName="x2" from="480" to="850" dur="1s" begin="4.7s" fill="freeze"/>
-  </line>
-  <line x1="480" y1="1470" x2="480" y2="1470" stroke="#8A6A2A" stroke-width="0.8">
-    <animate attributeName="x2" from="480" to="110" dur="1s" begin="4.7s" fill="freeze"/>
-  </line>
-  <use href="#vol" x="480" y="1470" transform="translate(480,1470) scale(0.85)"/>
-</g>
-
-<!-- ═══════════════════════════════════════════
-     ON AI · 「智」
-     ═══════════════════════════════════════════ -->
-<g>
-  <text x="110" y="1532" font-family="'Songti SC','STSong','SimSun',serif"
-        font-size="44" fill="#B8922A" opacity="0">智
-    <animate attributeName="opacity" to="0.9" dur="1s" begin="4.9s" fill="freeze"/>
-  </text>
-  <text x="172" y="1522" font-family="'Cinzel','Trajan Pro','Times New Roman',serif"
-        font-size="11" fill="#8A6A2A" letter-spacing="5" opacity="0">O N &nbsp; A I
-    <animate attributeName="opacity" to="0.85" dur="1s" begin="5.0s" fill="freeze"/>
-  </text>
-  <text font-family="'Cormorant Garamond','Garamond',Georgia,serif" font-size="17" fill="#E8D4AA" opacity="0">
-    <animate attributeName="opacity" to="0.8" dur="1.2s" begin="5.2s" fill="freeze"/>
-    <tspan x="110" y="1580">Neither reverence nor avoidance. I deploy AI in live environments —</tspan>
-    <tspan x="110" y="1606">inside messy data, entrenched habits, and organizational inertia.</tspan>
-    <tspan x="110" y="1632">My interest lies not in benchmark deltas, but in whether it spares</tspan>
-    <tspan x="110" y="1658">a specific person one repetitive task, or surfaces a relationship</tspan>
-    <tspan x="110" y="1684">that was previously invisible.</tspan>
-  </text>
-
-  <!-- 弧线引用（穹顶铭文） -->
-  <text font-family="'Cormorant Garamond','Garamond',Georgia,serif"
-        font-size="21" fill="#E8D4AA" font-style="italic" opacity="0">
-    <animate attributeName="opacity" to="0.95" dur="1.6s" begin="5.6s" fill="freeze"/>
-    <textPath href="#arc" startOffset="50%" text-anchor="middle">
-      “ AI amplifies judgment; it does not replace it. ”
-    </textPath>
-  </text>
-
-  <text font-family="'Cormorant Garamond','Garamond',Georgia,serif" font-size="17" fill="#C49A6A" font-style="italic" opacity="0">
-    <animate attributeName="opacity" to="0.8" dur="1.2s" begin="5.9s" fill="freeze"/>
-    <tspan x="110" y="1798">Taking the black box apart until model behavior becomes</tspan>
-    <tspan x="110" y="1824">legible, debuggable, and worthy of trust.</tspan>
+<g class="rise-in d46">
+  <text x="110" y="1374" font-family="Cinzel, Trajan Pro, Times New Roman, serif" font-size="18" fill="#8B2A2A">Ⅳ</text>
+  <text x="146" y="1374" font-family="Cinzel, Trajan Pro, Times New Roman, serif" font-size="13" fill="#E8D4AA" letter-spacing="3">APPLIED AI</text>
+  <text font-family="Cormorant Garamond, Garamond, Georgia, serif" font-size="16" fill="#C49A6A">
+    <tspan x="146" y="1402">Placing the technology inside real constraints and asking</tspan>
+    <tspan x="146" y="1426">whose actual problem it solved.</tspan>
   </text>
 </g>
 
-<!-- ═══ 分隔 04 ═══ -->
-<g>
-  <line x1="480" y1="1870" x2="480" y2="1870" stroke="#8A6A2A" stroke-width="0.8">
-    <animate attributeName="x2" from="480" to="850" dur="1s" begin="6.0s" fill="freeze"/>
-  </line>
-  <line x1="480" y1="1870" x2="480" y2="1870" stroke="#8A6A2A" stroke-width="0.8">
-    <animate attributeName="x2" from="480" to="110" dur="1s" begin="6.0s" fill="freeze"/>
-  </line>
-  <use href="#vol" x="480" y="1870" transform="translate(480,1870) scale(0.85)"/>
+<!-- 分隔 03 -->
+<line class="rule-grow d47" x1="480" y1="1470" x2="850" y2="1470" stroke="#8A6A2A" stroke-width="0.8"/>
+<line class="rule-grow d47" x1="480" y1="1470" x2="110" y2="1470" stroke="#8A6A2A" stroke-width="0.8"/>
+<use href="#vol" x="480" y="1470" transform="translate(480,1470) scale(0.85)"/>
+
+<!-- ON AI -->
+<text class="fade-in d49" x="110" y="1532" font-family="Songti SC, STSong, SimSun, serif" font-size="44" fill="#B8922A">智</text>
+<text class="fade-in d50" x="172" y="1522" font-family="Cinzel, Trajan Pro, Times New Roman, serif" font-size="11" fill="#8A6A2A" letter-spacing="5">O N  A I</text>
+<text class="fade-in d52" font-family="Cormorant Garamond, Garamond, Georgia, serif" font-size="17" fill="#E8D4AA">
+  <tspan x="110" y="1580">Neither reverence nor avoidance. I deploy AI in live environments —</tspan>
+  <tspan x="110" y="1606">inside messy data, entrenched habits, and organizational inertia.</tspan>
+  <tspan x="110" y="1632">My interest lies not in benchmark deltas, but in whether it spares</tspan>
+  <tspan x="110" y="1658">a specific person one repetitive task, or surfaces a relationship</tspan>
+  <tspan x="110" y="1684">that was previously invisible.</tspan>
+</text>
+<text class="fade-in d56" font-family="Cormorant Garamond, Garamond, Georgia, serif" font-size="21" fill="#E8D4AA" font-style="italic">
+  <textPath href="#arc" startOffset="50%" text-anchor="middle">“ AI amplifies judgment; it does not replace it. ”</textPath>
+</text>
+<text class="fade-in d59" font-family="Cormorant Garamond, Garamond, Georgia, serif" font-size="17" fill="#C49A6A" font-style="italic">
+  <tspan x="110" y="1798">Taking the black box apart until model behavior becomes</tspan>
+  <tspan x="110" y="1824">legible, debuggable, and worthy of trust.</tspan>
+</text>
+
+<!-- 分隔 04 -->
+<line class="rule-grow d60" x1="480" y1="1870" x2="850" y2="1870" stroke="#8A6A2A" stroke-width="0.8"/>
+<line class="rule-grow d60" x1="480" y1="1870" x2="110" y2="1870" stroke="#8A6A2A" stroke-width="0.8"/>
+<use href="#vol" x="480" y="1870" transform="translate(480,1870) scale(0.85)"/>
+
+<!-- BUILDS -->
+<text class="fade-in d62" x="110" y="1932" font-family="Songti SC, STSong, SimSun, serif" font-size="44" fill="#B8922A">作</text>
+<text class="fade-in d63" x="172" y="1922" font-family="Cinzel, Trajan Pro, Times New Roman, serif" font-size="11" fill="#8A6A2A" letter-spacing="5">S E L E C T E D  B U I L D S</text>
+
+<g class="fade-in d65" font-family="Cormorant Garamond, Garamond, Georgia, serif" font-size="16">
+  <text x="110" y="1972" fill="#8A6A2A" font-size="11" letter-spacing="1">№01</text>
+  <text x="158" y="1972" fill="#E8D4AA" font-weight="600">FastMe-RAG-Frame</text>
+  <text x="500" y="1972" fill="#C49A6A" font-style="italic" font-size="14">Manufacturing RAG framework</text>
+  <text x="110" y="2014" fill="#8A6A2A" font-size="11" letter-spacing="1">№02</text>
+  <text x="158" y="2014" fill="#E8D4AA" font-weight="600">EASY-Knowledge-Graph-Builder</text>
+  <text x="500" y="2014" fill="#C49A6A" font-style="italic" font-size="14">Automated KG construction</text>
+  <text x="110" y="2056" fill="#8A6A2A" font-size="11" letter-spacing="1">№03</text>
+  <text x="158" y="2056" fill="#E8D4AA" font-weight="600">Transformer2edge</text>
+  <text x="500" y="2056" fill="#C49A6A" font-style="italic" font-size="14">Edge AI deployment</text>
+  <text x="110" y="2098" fill="#8A6A2A" font-size="11" letter-spacing="1">№04</text>
+  <text x="158" y="2098" fill="#E8D4AA" font-weight="600">transformer-visualizer</text>
+  <text x="500" y="2098" fill="#C49A6A" font-style="italic" font-size="14">Model interpretability</text>
+  <text x="110" y="2140" fill="#8A6A2A" font-size="11" letter-spacing="1">№05</text>
+  <text x="158" y="2140" fill="#E8D4AA" font-weight="600">Infinite-Space</text>
+  <text x="500" y="2140" fill="#C49A6A" font-style="italic" font-size="14">Spatial thinking tool</text>
+  <text x="110" y="2182" fill="#8A6A2A" font-size="11" letter-spacing="1">№06</text>
+  <text x="158" y="2182" fill="#E8D4AA" font-weight="600">ClaudeCode-Dashboard</text>
+  <text x="500" y="2182" fill="#C49A6A" font-style="italic" font-size="14">AI-assisted development</text>
 </g>
 
-<!-- ═══════════════════════════════════════════
-     BUILDS · 「作」
-     ═══════════════════════════════════════════ -->
-<g>
-  <text x="110" y="1932" font-family="'Songti SC','STSong','SimSun',serif"
-        font-size="44" fill="#B8922A" opacity="0">作
-    <animate attributeName="opacity" to="0.9" dur="1s" begin="6.2s" fill="freeze"/>
-  </text>
-  <text x="172" y="1922" font-family="'Cinzel','Trajan Pro','Times New Roman',serif"
-        font-size="11" fill="#8A6A2A" letter-spacing="5" opacity="0">S E L E C T E D &nbsp; B U I L D S
-    <animate attributeName="opacity" to="0.85" dur="1s" begin="6.3s" fill="freeze"/>
-  </text>
-
-  <!-- 项目列表：编号 + 名称 + 描述 -->
-  <g font-family="'Cormorant Garamond','Garamond',Georgia,serif" font-size="16" opacity="0">
-    <animate attributeName="opacity" to="1" dur="1.2s" begin="6.5s" fill="freeze"/>
-    <text x="110" y="1972" fill="#8A6A2A" font-size="11" letter-spacing="1">№01</text>
-    <text x="158" y="1972" fill="#E8D4AA" font-weight="600">FastMe-RAG-Frame</text>
-    <text x="500" y="1972" fill="#C49A6A" font-style="italic" font-size="14">Manufacturing RAG framework</text>
-
-    <text x="110" y="2014" fill="#8A6A2A" font-size="11" letter-spacing="1">№02</text>
-    <text x="158" y="2014" fill="#E8D4AA" font-weight="600">EASY-Knowledge-Graph-Builder</text>
-    <text x="500" y="2014" fill="#C49A6A" font-style="italic" font-size="14">Automated KG construction</text>
-
-    <text x="110" y="2056" fill="#8A6A2A" font-size="11" letter-spacing="1">№03</text>
-    <text x="158" y="2056" fill="#E8D4AA" font-weight="600">Transformer2edge</text>
-    <text x="500" y="2056" fill="#C49A6A" font-style="italic" font-size="14">Edge AI deployment</text>
-
-    <text x="110" y="2098" fill="#8A6A2A" font-size="11" letter-spacing="1">№04</text>
-    <text x="158" y="2098" fill="#E8D4AA" font-weight="600">transformer-visualizer</text>
-    <text x="500" y="2098" fill="#C49A6A" font-style="italic" font-size="14">Model interpretability</text>
-
-    <text x="110" y="2140" fill="#8A6A2A" font-size="11" letter-spacing="1">№05</text>
-    <text x="158" y="2140" fill="#E8D4AA" font-weight="600">Infinite-Space</text>
-    <text x="500" y="2140" fill="#C49A6A" font-style="italic" font-size="14">Spatial thinking tool</text>
-
-    <text x="110" y="2182" fill="#8A6A2A" font-size="11" letter-spacing="1">№06</text>
-    <text x="158" y="2182" fill="#E8D4AA" font-weight="600">ClaudeCode-Dashboard</text>
-    <text x="500" y="2182" fill="#C49A6A" font-style="italic" font-size="14">AI-assisted development</text>
-  </g>
-
-  <!-- Metrics -->
-  <g opacity="0">
-    <animate attributeName="opacity" to="1" dur="1.4s" begin="6.8s" fill="freeze"/>
-    <text x="110" y="2280" font-family="'Cinzel','Trajan Pro','Times New Roman',serif"
-          font-size="76" fill="#E8D4AA" filter="url(#halo)">6+</text>
-    <text x="260" y="2250" font-family="'Cormorant Garamond','Garamond',Georgia,serif"
-          font-size="15" fill="#C49A6A" font-style="italic">open-source builds,</text>
-    <text x="260" y="2274" font-family="'Cormorant Garamond','Garamond',Georgia,serif"
-          font-size="15" fill="#C49A6A" font-style="italic">each one carved from scratch.</text>
-  </g>
+<g class="fade-in d68">
+  <text x="110" y="2280" font-family="Cinzel, Trajan Pro, Times New Roman, serif" font-size="76" fill="#E8D4AA" filter="url(#halo)">6+</text>
+  <text x="260" y="2250" font-family="Cormorant Garamond, Garamond, Georgia, serif" font-size="15" fill="#C49A6A" font-style="italic">open-source builds,</text>
+  <text x="260" y="2274" font-family="Cormorant Garamond, Garamond, Georgia, serif" font-size="15" fill="#C49A6A" font-style="italic">each one carved from scratch.</text>
 </g>
 
-<!-- ═══════════════════════════════════════════
-     收束
-     ═══════════════════════════════════════════ -->
-<g>
-  <line x1="180" y1="2380" x2="780" y2="2380" stroke="url(#rule)" stroke-width="0.8" opacity="0.7"/>
-  <use href="#vol" x="480" y="2380" transform="translate(480,2380) scale(1.1)"/>
-  <text x="480" y="2440" text-anchor="middle"
-        font-family="'Cormorant Garamond','Garamond',Georgia,serif"
-        font-size="17" fill="#B8922A" font-style="italic" letter-spacing="1" opacity="0">
-    From the one who does the work — to the one who defines how the work is done.
-    <animate attributeName="opacity" to="0.9" dur="1.6s" begin="7.2s" fill="freeze"/>
-  </text>
-  <text x="480" y="2482" text-anchor="middle"
-        font-family="'Songti SC','STSong','SimSun',serif"
-        font-size="14" fill="#8A6A2A" letter-spacing="6" opacity="0">
-    长 期 主 义 · 复 利 · 成 长
-    <animate attributeName="opacity" to="0.75" dur="1.4s" begin="7.6s" fill="freeze"/>
-  </text>
-  <text x="480" y="2530" text-anchor="middle"
-        font-family="'Cinzel','Trajan Pro','Times New Roman',serif"
-        font-size="10" fill="#8A6A2A" letter-spacing="4" opacity="0">
-    HAPPY-MOMO.GITHUB.IO
-    <animate attributeName="opacity" to="0.55" dur="1.2s" begin="8.0s" fill="freeze"/>
-  </text>
-</g>
+<!-- 收束 -->
+<line x1="180" y1="2380" x2="780" y2="2380" stroke="url(#rule)" stroke-width="0.8" opacity="0.7"/>
+<use href="#vol" x="480" y="2380" transform="translate(480,2380) scale(1.1)"/>
+<text class="fade-in d72" x="480" y="2440" text-anchor="middle" font-family="Cormorant Garamond, Garamond, Georgia, serif" font-size="17" fill="#B8922A" font-style="italic" letter-spacing="1">From the one who does the work — to the one who defines how the work is done.</text>
+<text class="fade-in d76" x="480" y="2482" text-anchor="middle" font-family="Songti SC, STSong, SimSun, serif" font-size="14" fill="#8A6A2A" letter-spacing="6">长 期 主 义 · 复 利 · 成 长</text>
+<text class="fade-in d80" x="480" y="2530" text-anchor="middle" font-family="Cinzel, Trajan Pro, Times New Roman, serif" font-size="10" fill="#8A6A2A" letter-spacing="4">HAPPY-MOMO.GITHUB.IO</text>
 
 </svg>
