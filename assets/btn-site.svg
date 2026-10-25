@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 56" width="300" height="56">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2A2010"/>
+      <stop offset="1" stop-color="#1A1408"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#E8D4AA" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#E8D4AA" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#E8D4AA" stop-opacity="0"/>
+      <animate attributeName="x1" values="-1;1" dur="4s" repeatCount="indefinite"/>
+    </linearGradient>
+  </defs>
+  <rect x="1" y="1" width="298" height="54" rx="27" fill="url(#bg)" stroke="#B8922A" stroke-width="1"/>
+  <rect x="4" y="4" width="292" height="48" rx="24" fill="none" stroke="#E8D4AA" stroke-width="0.4" opacity="0.4"/>
+  <rect x="1" y="1" width="298" height="54" rx="27" fill="url(#shine)" opacity="0.4"/>
+  <text x="150" y="35" text-anchor="middle"
+        font-family="Cinzel, Trajan Pro, Times New Roman, serif"
+        font-size="13" fill="#E8D4AA" letter-spacing="5">PERSONAL SITE</text>
+</svg>
