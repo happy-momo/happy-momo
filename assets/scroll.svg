@@ -52,14 +52,9 @@
   .s7{animation-delay:1.4s}.s8{animation-delay:.5s}
   @keyframes twinkle { 0%,100%{opacity:.15} 50%{opacity:.9} }
 
-  .light-sweep { animation: sweep 9s linear infinite; }
-  @keyframes sweep { from{transform:translateX(-500px)} to{transform:translateX(500px)} }
-
+  /* ══════ 太阳系 ══════ */
   .sun-core { animation: sunPulse 6s ease-in-out infinite; }
-  .sun-halo { animation: haloPulse 6s ease-in-out infinite; }
   @keyframes sunPulse { 0%,100%{opacity:.85} 50%{opacity:1} }
-  @keyframes haloPulse { 0%,100%{opacity:.15} 50%{opacity:.30} }
-
   .orbit-a { transform-box: view-box; transform-origin: 760px 640px; animation: orbitA 26s linear infinite; }
   .orbit-b { transform-box: view-box; transform-origin: 760px 640px; animation: orbitB 40s linear infinite; }
   .orbit-c { transform-box: view-box; transform-origin: 760px 640px; animation: orbitC 56s linear infinite; }
@@ -67,13 +62,53 @@
   @keyframes orbitB { from{transform:rotate(360deg)} to{transform:rotate(0)} }
   @keyframes orbitC { from{transform:rotate(0)} to{transform:rotate(360deg)} }
 
-  .discobolus { animation: statueReveal 3s ease-out forwards; opacity: 0; }
-  @keyframes statueReveal { from{opacity:0} to{opacity:1} }
-  .statue-light { animation: statueSweep 8s ease-in-out infinite; transform-box: view-box; transform-origin: 740px 1195px; }
-  @keyframes statueSweep { 0%,100%{transform:translateX(-25px)} 50%{transform:translateX(25px)} }
-  .disc-rim { animation: discSpin 14s linear infinite; transform-box: fill-box; transform-origin: center; }
-  @keyframes discSpin { from{transform:rotate(0)} to{transform:rotate(360deg)} }
+  /* ══════ LLM 注意力网络 ══════ */
+  .tok { animation: tokPulse 3.2s ease-in-out infinite; }
+  .t1{animation-delay:0s}.t2{animation-delay:.4s}.t3{animation-delay:.8s}
+  .t4{animation-delay:1.2s}.t5{animation-delay:1.6s}
+  @keyframes tokPulse { 0%,100%{opacity:.55;r:3.2} 50%{opacity:1;r:4.2} }
 
+  .query-core { animation: queryPulse 2.8s ease-in-out infinite; }
+  @keyframes queryPulse { 0%,100%{opacity:.7;r:5} 50%{opacity:1;r:6.5} }
+
+  .attn-line { stroke-dasharray: 3 14; animation: attnFlow 3.5s linear infinite; }
+  .a1{animation-delay:0s}.a2{animation-delay:.5s}.a3{animation-delay:1s}
+  .a4{animation-delay:1.5s}.a5{animation-delay:2s}
+  @keyframes attnFlow { from{stroke-dashoffset:0} to{stroke-dashoffset:-34} }
+
+  .attn-cross { stroke-dasharray: 2 18; animation: attnCross 5s linear infinite; }
+  .c1{animation-delay:0s}.c2{animation-delay:1.2s}.c3{animation-delay:2.4s}
+  @keyframes attnCross { from{stroke-dashoffset:0} to{stroke-dashoffset:-40} }
+
+  .out-line { stroke-dasharray: 3 8; animation: outFlow 2s linear infinite; }
+  @keyframes outFlow { from{stroke-dashoffset:0} to{stroke-dashoffset:-22} }
+
+  .out-token { animation: outAppear 4s ease-in-out infinite; }
+  @keyframes outAppear { 0%,100%{opacity:.4} 50%{opacity:1} }
+
+  .prob-bar { transform-origin: left center; animation: probPulse 4s ease-in-out infinite; }
+  .b1{animation-delay:0s}.b2{animation-delay:.4s}.b3{animation-delay:.8s}
+  @keyframes probPulse { 0%,100%{transform:scaleX(1)} 50%{transform:scaleX(.62)} }
+
+  /* ══════ IoT 网络 ══════ */
+  .iot-link { stroke-dasharray: 4 12; animation: iotFlow 3s linear infinite; }
+  .il1{animation-delay:0s}.il2{animation-delay:.35s}.il3{animation-delay:.7s}
+  .il4{animation-delay:1.05s}.il5{animation-delay:1.4s}.il6{animation-delay:1.75s}
+  @keyframes iotFlow { from{stroke-dashoffset:0} to{stroke-dashoffset:-32} }
+
+  .iot-peer { stroke-dasharray: 2 16; animation: iotPeer 5s linear infinite; }
+  .ip1{animation-delay:0s}.ip2{animation-delay:1.2s}.ip3{animation-delay:2.4s}
+  @keyframes iotPeer { from{stroke-dashoffset:0} to{stroke-dashoffset:-36} }
+
+  .gateway { animation: gwPulse 3s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  @keyframes gwPulse { 0%,100%{opacity:.75;transform:scale(1)} 50%{opacity:1;transform:scale(1.08)} }
+
+  .device { animation: devPulse 3.6s ease-in-out infinite; }
+  .v1{animation-delay:0s}.v2{animation-delay:.5s}.v3{animation-delay:1s}
+  .v4{animation-delay:1.5s}.v5{animation-delay:2s}.v6{animation-delay:2.5s}
+  @keyframes devPulse { 0%,100%{opacity:.55} 50%{opacity:1} }
+
+  /* ══════ 电脑算法 ══════ */
   .screen-glow { animation: screenGlow 4s ease-in-out infinite; }
   @keyframes screenGlow { 0%,100%{opacity:.7} 50%{opacity:1} }
   .nn-node { animation: nodePulse 3s ease-in-out infinite; }
@@ -86,16 +121,7 @@
   .f4{animation-delay:.9s}.f5{animation-delay:1.2s}.f6{animation-delay:1.5s}
   @keyframes flow { from{stroke-dashoffset:0} to{stroke-dashoffset:-24} }
 
-  .climber { animation: climbBob 2.4s ease-in-out infinite; }
-  @keyframes climbBob {
-    0%,100%{transform:translate(0,0) rotate(-2deg)}
-    50%{transform:translate(0,-5px) rotate(1deg)}
-  }
-  .summit-light { animation: summitPulse 5s ease-in-out infinite; }
-  @keyframes summitPulse { 0%,100%{opacity:.3} 50%{opacity:.9} }
-  .rope-sway { animation: ropeSway 4s ease-in-out infinite; transform-box: fill-box; transform-origin: top; }
-  @keyframes ropeSway { 0%,100%{transform:rotate(-3deg)} 50%{transform:rotate(3deg)} }
-
+  /* ══════ 项目点 / Footer ══════ */
   .proj-dot { animation: projPulse 3.5s ease-in-out infinite; }
   .p1{animation-delay:0s}.p2{animation-delay:.35s}.p3{animation-delay:.7s}
   .p4{animation-delay:1.05s}.p5{animation-delay:1.4s}.p6{animation-delay:1.75s}
@@ -121,51 +147,11 @@
     <stop offset="0.5" stop-color="#B8922A" stop-opacity="0.7"/>
     <stop offset="1" stop-color="#8A6A2A" stop-opacity="0"/>
   </linearGradient>
-  <radialGradient id="sweepGrad">
-    <stop offset="0" stop-color="#F4E4C1" stop-opacity="0.4"/>
-    <stop offset="0.4" stop-color="#F4E4C1" stop-opacity="0.15"/>
-    <stop offset="1" stop-color="#F4E4C1" stop-opacity="0"/>
-  </radialGradient>
   <radialGradient id="sunGrad">
     <stop offset="0" stop-color="#F4E4C1" stop-opacity="0.9"/>
     <stop offset="0.6" stop-color="#B8922A" stop-opacity="0.6"/>
     <stop offset="1" stop-color="#8A6A2A" stop-opacity="0"/>
   </radialGradient>
-
-  <!-- 青铜体块渐变 -->
-  <linearGradient id="limbWarm" x1="0" y1="0" x2="1" y2="1">
-    <stop offset="0" stop-color="#5A4418"/>
-    <stop offset="0.35" stop-color="#B8922A"/>
-    <stop offset="0.6" stop-color="#E8D4AA"/>
-    <stop offset="1" stop-color="#4A3A1A"/>
-  </linearGradient>
-  <linearGradient id="torsoGrad" x1="0" y1="0" x2="1" y2="1">
-    <stop offset="0" stop-color="#4A3A1A"/>
-    <stop offset="0.45" stop-color="#8A6A2A"/>
-    <stop offset="0.75" stop-color="#C49A6A"/>
-    <stop offset="1" stop-color="#3A2A0A"/>
-  </linearGradient>
-  <linearGradient id="headGrad" x1="0" y1="0" x2="1" y2="1">
-    <stop offset="0" stop-color="#6B4F1A"/>
-    <stop offset="0.5" stop-color="#C49A6A"/>
-    <stop offset="1" stop-color="#4A3A1A"/>
-  </linearGradient>
-  <linearGradient id="discGrad" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0" stop-color="#E8D4AA"/>
-    <stop offset="0.5" stop-color="#B8922A"/>
-    <stop offset="1" stop-color="#5A4418"/>
-  </linearGradient>
-  <linearGradient id="packGrad" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0" stop-color="#3A2A0A"/>
-    <stop offset="0.5" stop-color="#8A6A2A"/>
-    <stop offset="1" stop-color="#4A3A1A"/>
-  </linearGradient>
-  <linearGradient id="rockGrad" x1="0" y1="0" x2="1" y2="1">
-    <stop offset="0" stop-color="#1A1408"/>
-    <stop offset="0.6" stop-color="#2A2010"/>
-    <stop offset="1" stop-color="#0D0B08"/>
-  </linearGradient>
-
   <filter id="grain" x="0" y="0" width="100%" height="100%">
     <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="5"/>
     <feColorMatrix type="saturate" values="0"/>
@@ -174,8 +160,6 @@
     <feGaussianBlur stdDeviation="3" result="b"/>
     <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
   </filter>
-  <filter id="sunHalo"><feGaussianBlur stdDeviation="8"/></filter>
-
   <g id="vol">
     <path d="M0,0 C7,-11 20,-11 22,0 C24,9 13,15 6,9 C0,5 2,-2 7,-2"
           fill="none" stroke="#B8922A" stroke-width="1.1" opacity="0.7"/>
@@ -228,7 +212,6 @@
 </g>
 <use href="#vol" x="480" y="72" transform="translate(480,72) scale(1.3)"/>
 <text class="fade-in d02" x="480" y="168" text-anchor="middle" font-family="Cinzel, Trajan Pro, Palatino Linotype, Book Antiqua, Times New Roman, serif" font-size="56" font-weight="700" fill="#E8D4AA" letter-spacing="9" filter="url(#halo)">HAPPY-MOMO</text>
-<ellipse class="light-sweep" cx="480" cy="145" rx="80" ry="45" fill="url(#sweepGrad)" pointer-events="none"/>
 <line class="rule-grow d04" x1="200" y1="196" x2="760" y2="196" stroke="url(#rule)" stroke-width="1"/>
 <text class="fade-in d10" x="480" y="232" text-anchor="middle" font-family="Cormorant Garamond, Garamond, Georgia, serif" font-size="17" fill="#B8922A" letter-spacing="4" font-style="italic">Rooted in industry. Built in systems. Oriented by intelligence.</text>
 <text class="fade-in d13" x="480" y="266" text-anchor="middle" font-family="Cormorant Garamond, Garamond, Georgia, serif" font-size="13" fill="#C49A6A" font-style="italic" letter-spacing="2">Where the factory floor meets the reasoning layer</text>
@@ -266,11 +249,11 @@
   <tspan x="110" y="884">by taste.</tspan>
 </text>
 
+<!-- 太阳系 -->
 <g class="fade-in d34">
   <circle cx="760" cy="640" r="38" fill="none" stroke="#8A6A2A" stroke-width="0.4" opacity="0.5"/>
   <circle cx="760" cy="640" r="62" fill="none" stroke="#8A6A2A" stroke-width="0.4" opacity="0.4"/>
   <circle cx="760" cy="640" r="88" fill="none" stroke="#8A6A2A" stroke-width="0.4" opacity="0.3"/>
-  <circle class="sun-halo" cx="760" cy="640" r="26" fill="#F4E4C1" filter="url(#sunHalo)"/>
   <circle class="sun-core" cx="760" cy="640" r="10" fill="url(#sunGrad)"/>
   <circle cx="760" cy="640" r="4" fill="#F4E4C1"/>
   <g class="orbit-a"><circle cx="798" cy="640" r="3" fill="#E8D4AA"/></g>
@@ -290,103 +273,97 @@
   <text x="110" y="1050" font-family="Cinzel, Trajan Pro, Times New Roman, serif" font-size="18" fill="#8B2A2A">Ⅰ</text>
   <text x="146" y="1050" font-family="Cinzel, Trajan Pro, Times New Roman, serif" font-size="13" fill="#E8D4AA" letter-spacing="3">CREATIVITY</text>
   <text font-family="Cormorant Garamond, Garamond, Georgia, serif" font-size="16" fill="#C49A6A">
-    <tspan x="146" y="1078">Locating room inside constraints, structure inside complexity,</tspan>
-    <tspan x="146" y="1102">and the abstractions worth preserving inside repetition.</tspan>
+    <tspan x="146" y="1078">Locating room inside constraints, structure inside</tspan>
+    <tspan x="146" y="1102">complexity, abstraction inside repetition.</tspan>
   </text>
 </g>
-<line x1="146" y1="1124" x2="650" y2="1124" stroke="#8A6A2A" stroke-width="0.5" opacity="0.35"/>
+<line x1="146" y1="1124" x2="600" y2="1124" stroke="#8A6A2A" stroke-width="0.5" opacity="0.35"/>
 
 <g class="rise-in d40">
   <text x="110" y="1158" font-family="Cinzel, Trajan Pro, Times New Roman, serif" font-size="18" fill="#8B2A2A">Ⅱ</text>
   <text x="146" y="1158" font-family="Cinzel, Trajan Pro, Times New Roman, serif" font-size="13" fill="#E8D4AA" letter-spacing="3">AGENCY</text>
   <text font-family="Cormorant Garamond, Garamond, Georgia, serif" font-size="16" fill="#C49A6A">
-    <tspan x="146" y="1186">Defining the problem where no one asked, then carrying it</tspan>
-    <tspan x="146" y="1210">through to a result that holds.</tspan>
+    <tspan x="146" y="1186">Defining the problem where no one asked, then</tspan>
+    <tspan x="146" y="1210">carrying it through to a result that holds.</tspan>
   </text>
 </g>
-<line x1="146" y1="1232" x2="650" y2="1232" stroke="#8A6A2A" stroke-width="0.5" opacity="0.35"/>
+<line x1="146" y1="1232" x2="600" y2="1232" stroke="#8A6A2A" stroke-width="0.5" opacity="0.35"/>
 
 <g class="rise-in d43">
   <text x="110" y="1266" font-family="Cinzel, Trajan Pro, Times New Roman, serif" font-size="18" fill="#8B2A2A">Ⅲ</text>
   <text x="146" y="1266" font-family="Cinzel, Trajan Pro, Times New Roman, serif" font-size="13" fill="#E8D4AA" letter-spacing="3">TASTE</text>
   <text font-family="Cormorant Garamond, Garamond, Georgia, serif" font-size="16" fill="#C49A6A">
-    <tspan x="146" y="1294">What remains after reading widely, building for years, and</tspan>
-    <tspan x="146" y="1318">cutting ruthlessly. Code is material; the system is the work.</tspan>
+    <tspan x="146" y="1294">What remains after reading widely, building for years,</tspan>
+    <tspan x="146" y="1318">and cutting ruthlessly. Code is material; the work is the system.</tspan>
   </text>
 </g>
-<line x1="146" y1="1340" x2="650" y2="1340" stroke="#8A6A2A" stroke-width="0.5" opacity="0.35"/>
+<line x1="146" y1="1340" x2="600" y2="1340" stroke="#8A6A2A" stroke-width="0.5" opacity="0.35"/>
 
 <g class="rise-in d46">
   <text x="110" y="1374" font-family="Cinzel, Trajan Pro, Times New Roman, serif" font-size="18" fill="#8B2A2A">Ⅳ</text>
   <text x="146" y="1374" font-family="Cinzel, Trajan Pro, Times New Roman, serif" font-size="13" fill="#E8D4AA" letter-spacing="3">APPLIED AI</text>
   <text font-family="Cormorant Garamond, Garamond, Georgia, serif" font-size="16" fill="#C49A6A">
-    <tspan x="146" y="1402">Placing the technology inside real constraints and asking</tspan>
-    <tspan x="146" y="1426">whose actual problem it solved.</tspan>
+    <tspan x="146" y="1402">Placing the technology inside real constraints and</tspan>
+    <tspan x="146" y="1426">asking whose actual problem it solved.</tspan>
   </text>
 </g>
 
-<!-- ═══ 掷铁饼者 · 体块化 ═══ -->
-<g class="fade-in d37" transform="translate(760,1200)">
-  <ellipse class="statue-light" cx="0" cy="15" rx="100" ry="130" fill="url(#sweepGrad)" opacity="0.45"/>
+<!-- ═══ LLM 注意力网络 ═══ -->
+<g class="fade-in d37">
+  <!-- 外圈 attention（token 之间） -->
+  <g fill="none" stroke-width="0.7">
+    <line class="attn-cross c1" x1="700" y1="1085" x2="780" y2="1065" stroke="#8A6A2A" opacity="0.6"/>
+    <line class="attn-cross c2" x1="780" y1="1065" x2="850" y2="1095" stroke="#B8922A" opacity="0.7"/>
+    <line class="attn-cross c3" x1="850" y1="1095" x2="840" y2="1190" stroke="#8A6A2A" opacity="0.6"/>
+    <line class="attn-cross c1" x1="840" y1="1190" x2="710" y2="1200" stroke="#B8922A" opacity="0.7"/>
+    <line class="attn-cross c2" x1="710" y1="1200" x2="700" y2="1085" stroke="#8A6A2A" opacity="0.6"/>
+    <!-- 交叉 attention -->
+    <line class="attn-cross c3" x1="700" y1="1085" x2="840" y2="1190" stroke="#8B2A2A" opacity="0.55"/>
+    <line class="attn-cross c1" x1="780" y1="1065" x2="710" y2="1200" stroke="#8B2A2A" opacity="0.55"/>
+  </g>
 
-  <g class="discobolus">
-    <!-- 地面阴影 -->
-    <ellipse cx="-5" cy="102" rx="58" ry="6" fill="#0D0B08" opacity="0.9"/>
+  <!-- token → query 的 attention -->
+  <g fill="none" stroke-width="0.8">
+    <line class="attn-line a1" x1="700" y1="1085" x2="775" y2="1145" stroke="#B8922A"/>
+    <line class="attn-line a2" x1="780" y1="1065" x2="775" y2="1145" stroke="#E8D4AA"/>
+    <line class="attn-line a3" x1="850" y1="1095" x2="775" y2="1145" stroke="#B8922A"/>
+    <line class="attn-line a4" x1="840" y1="1190" x2="775" y2="1145" stroke="#E8D4AA"/>
+    <line class="attn-line a5" x1="710" y1="1200" x2="775" y2="1145" stroke="#B8922A"/>
+  </g>
 
-    <!-- 左腿（向后伸展，脚尖点地） -->
-    <path d="M 0 24 Q -16 34 -32 44 Q -45 55 -58 66 L -55 72 Q -41 61 -27 50 Q -11 40 4 30 Z"
-          fill="url(#limbWarm)" stroke="#8A6A2A" stroke-width="0.5"/>
-    <path d="M -2 27 Q -17 37 -31 47 Q -44 58 -55 68"
-          fill="none" stroke="#F4E4C1" stroke-width="0.9" opacity="0.45"/>
+  <!-- token 节点 -->
+  <g fill="#E8D4AA">
+    <circle class="tok t1" cx="700" cy="1085" r="3.5"/>
+    <circle class="tok t2" cx="780" cy="1065" r="4"/>
+    <circle class="tok t3" cx="850" cy="1095" r="3.5"/>
+    <circle class="tok t4" cx="840" cy="1190" r="3.5"/>
+    <circle class="tok t5" cx="710" cy="1200" r="3.5"/>
+  </g>
+  <!-- token 标签 -->
+  <g font-family="Cinzel, Trajan Pro, Times New Roman, serif" font-size="6.5" fill="#8A6A2A" letter-spacing="1">
+    <text x="708" y="1078">q₁</text>
+    <text x="788" y="1058">k₁</text>
+    <text x="858" y="1088">v₁</text>
+    <text x="848" y="1183">q₂</text>
+    <text x="718" y="1193">k₂</text>
+  </g>
 
-    <!-- 右腿（支撑，弯曲） -->
-    <path d="M 10 22 Q 24 38 33 56 Q 38 78 36 98 L 48 99 Q 48 76 42 52 Q 33 33 19 18 Z"
-          fill="url(#limbWarm)" stroke="#8A6A2A" stroke-width="0.5"/>
-    <path d="M 14 25 Q 27 40 36 58 Q 41 79 39 97"
-          fill="none" stroke="#F4E4C1" stroke-width="0.9" opacity="0.5"/>
-    <!-- 右腿肌肉暗示 -->
-    <path d="M 20 40 Q 30 50 34 62" fill="none" stroke="#4A3A1A" stroke-width="0.6" opacity="0.5"/>
+  <!-- query 核心 -->
+  <circle class="query-core" cx="775" cy="1145" r="5.5" fill="#B8922A"/>
+  <circle cx="775" cy="1145" r="2" fill="#F4E4C1"/>
+  <text x="775" y="1133" text-anchor="middle" font-family="Cinzel, Trajan Pro, Times New Roman, serif" font-size="6" fill="#8B2A2A" letter-spacing="1">SOFTMAX</text>
 
-    <!-- 躯干（前倾扭转） -->
-    <path d="M -26 -26 Q -16 -6 -6 10 Q 2 22 12 30 L 22 22 Q 12 14 4 0 Q -4 -16 -12 -30 Z"
-          fill="url(#torsoGrad)" stroke="#8A6A2A" stroke-width="0.6"/>
-    <!-- 胸廓高光 -->
-    <path d="M -20 -20 Q -12 -4 -4 8" fill="none" stroke="#E8D4AA" stroke-width="1" opacity="0.4"/>
-    <!-- 腹肌暗示 -->
-    <path d="M -6 6 Q 0 12 6 18" fill="none" stroke="#4A3A1A" stroke-width="0.6" opacity="0.5"/>
+  <!-- 输出流 -->
+  <line class="out-line" x1="775" y1="1152" x2="775" y2="1315" stroke="#E8D4AA" stroke-width="1"/>
+  <!-- 输出 token -->
+  <rect class="out-token" x="757" y="1315" width="36" height="22" rx="3" fill="none" stroke="#E8D4AA" stroke-width="0.8"/>
+  <text class="out-token" x="775" y="1330" text-anchor="middle" font-family="Cinzel, Trajan Pro, Times New Roman, serif" font-size="9" fill="#E8D4AA" letter-spacing="1">token</text>
 
-    <!-- 左臂（下垂至膝） -->
-    <path d="M -28 -18 Q -26 0 -20 14 Q -14 27 -2 36 L 5 30 Q -6 22 -12 10 Q -18 -3 -20 -16 Z"
-          fill="url(#limbWarm)" stroke="#8A6A2A" stroke-width="0.5"/>
-    <path d="M -24 -14 Q -22 2 -16 15" fill="none" stroke="#F4E4C1" stroke-width="0.8" opacity="0.4"/>
-
-    <!-- 右臂（后上举持饼） -->
-    <path d="M -4 -30 Q 12 -38 28 -46 Q 42 -54 54 -62 L 58 -56 Q 46 -47 32 -39 Q 16 -31 0 -23 Z"
-          fill="url(#limbWarm)" stroke="#8A6A2A" stroke-width="0.5"/>
-    <path d="M 0 -27 Q 15 -35 30 -43 Q 43 -51 54 -59"
-          fill="none" stroke="#F4E4C1" stroke-width="0.9" opacity="0.55"/>
-    <!-- 肩部三角肌 -->
-    <ellipse cx="-2" cy="-30" rx="6" ry="5" fill="url(#limbWarm)" stroke="#8A6A2A" stroke-width="0.4"/>
-
-    <!-- 铁饼 -->
-    <g transform="rotate(-32 66 -64)">
-      <ellipse cx="66" cy="-64" rx="16" ry="7.5" fill="url(#discGrad)" stroke="#E8D4AA" stroke-width="0.8"/>
-      <ellipse class="disc-rim" cx="66" cy="-64" rx="11" ry="5" fill="none" stroke="#5A4418" stroke-width="0.6" opacity="0.7"/>
-      <circle cx="66" cy="-64" r="2.2" fill="#F4E4C1"/>
-    </g>
-
-    <!-- 颈部 -->
-    <path d="M -24 -40 L -18 -27 L -13 -28 L -19 -42 Z" fill="url(#limbWarm)" stroke="#8A6A2A" stroke-width="0.4"/>
-
-    <!-- 头部（转向铁饼方向） -->
-    <ellipse cx="-26" cy="-50" rx="9" ry="10.5" fill="url(#headGrad)" stroke="#8A6A2A" stroke-width="0.6"/>
-    <!-- 面部受光侧 -->
-    <path d="M -20 -54 Q -16 -50 -19 -44" fill="none" stroke="#F4E4C1" stroke-width="0.9" opacity="0.5"/>
-    <!-- 头发体积 -->
-    <path d="M -34 -56 Q -33 -63 -26 -62 Q -19 -61 -18 -55 Q -22 -58 -28 -57 Q -32 -56 -34 -56 Z"
-          fill="#3A2A0A" opacity="0.9"/>
-    <!-- 眼窝暗示 -->
-    <ellipse cx="-21" cy="-52" rx="2" ry="1.2" fill="#3A2A0A" opacity="0.7"/>
+  <!-- 概率条 -->
+  <g>
+    <rect x="810" y="1318" width="60" height="3" fill="#B8922A" opacity="0.85" class="prob-bar b1"/>
+    <rect x="810" y="1327" width="42" height="3" fill="#8A6A2A" opacity="0.7" class="prob-bar b2"/>
+    <rect x="810" y="1336" width="24" height="3" fill="#8A6A2A" opacity="0.5" class="prob-bar b3"/>
   </g>
 </g>
 
@@ -471,91 +448,54 @@
   <text x="500" y="2182" fill="#C49A6A" font-style="italic" font-size="14">AI-assisted development</text>
 </g>
 
-<!-- ═══ 攀岩者 · 体块化 ═══ -->
-<g class="fade-in d66" transform="translate(770,2110)">
-  <!-- 悬崖：不规则岩壁体块 -->
-  <g>
-    <path d="M -78 88 L -60 38 L -48 52 L -32 4 L -18 20 L 0 -22 L 16 -6 L 34 -46 L 50 -28 L 64 6 L 78 88 Z"
-          fill="url(#rockGrad)" stroke="#8A6A2A" stroke-width="0.9" opacity="0.98"/>
-    <!-- 岩壁受光面 -->
-    <path d="M 0 -22 L 16 -6 L 34 -46 L 50 -28 L 64 6 L 58 6 L 46 -24 L 32 -42 L 14 -2 L 2 -18 Z"
-          fill="#5A4418" opacity="0.45"/>
-    <!-- 岩壁纹理与裂隙 -->
-    <path d="M -52 62 L -42 46 M -22 32 L -12 16 M 18 -10 L 28 -26 M 42 22 L 52 6"
-          stroke="#8A6A2A" stroke-width="0.5" opacity="0.55"/>
-    <!-- 岩点凸起 -->
-    <ellipse cx="-40" cy="42" rx="6" ry="3" fill="#4A3A1A" stroke="#8A6A2A" stroke-width="0.4" opacity="0.8"/>
-    <ellipse cx="-24" cy="-2" rx="5" ry="2.5" fill="#4A3A1A" stroke="#8A6A2A" stroke-width="0.4" opacity="0.8"/>
-    <ellipse cx="12" cy="-16" rx="5" ry="2.5" fill="#4A3A1A" stroke="#8A6A2A" stroke-width="0.4" opacity="0.8"/>
+<!-- ═══ IoT 拓扑 ═══ -->
+<g class="fade-in d66">
+  <!-- 设备到网关 -->
+  <g fill="none" stroke-width="0.8">
+    <line class="iot-link il1" x1="660" y1="2020" x2="750" y2="2090" stroke="#B8922A"/>
+    <line class="iot-link il2" x1="690" y1="2160" x2="750" y2="2090" stroke="#E8D4AA"/>
+    <line class="iot-link il3" x1="810" y1="2170" x2="750" y2="2090" stroke="#B8922A"/>
+    <line class="iot-link il4" x1="850" y1="2030" x2="750" y2="2090" stroke="#E8D4AA"/>
+    <line class="iot-link il5" x1="770" y1="1975" x2="750" y2="2090" stroke="#B8922A"/>
+    <line class="iot-link il6" x1="870" y1="2100" x2="750" y2="2090" stroke="#E8D4AA"/>
   </g>
 
-  <!-- 峰顶光 -->
-  <circle class="summit-light" cx="34" cy="-46" r="4" fill="#F4E4C1"/>
-  <circle class="summit-light" cx="34" cy="-46" r="13" fill="#F4E4C1" opacity="0.22" filter="url(#sunHalo)"/>
-
-  <!-- 攀登者本体 -->
-  <g class="climber" transform="translate(-4, -10)">
-
-    <!-- 动力绳：从腰部垂下，微摆 -->
-    <path class="rope-sway" d="M 4 6 Q 12 28 8 50 Q 6 66 16 80"
-          fill="none" stroke="#C49A6A" stroke-width="1.3" opacity="0.85"/>
-
-    <!-- 背包（体块 + 高光） -->
-    <rect x="5" y="-24" width="15" height="21" rx="3.5"
-          fill="url(#packGrad)" stroke="#8A6A2A" stroke-width="0.5"/>
-    <line x1="7" y1="-19" x2="18" y2="-19" stroke="#3A2A0A" stroke-width="0.6"/>
-    <line x1="7" y1="-12" x2="18" y2="-12" stroke="#3A2A0A" stroke-width="0.6"/>
-    <path d="M 8 -22 Q 8 -6 10 4" fill="none" stroke="#E8D4AA" stroke-width="0.6" opacity="0.4"/>
-
-    <!-- 右腿（蹬下方岩点） -->
-    <path d="M 2 -2 Q 10 8 17 19 L 24 15 Q 17 4 8 -6 Z"
-          fill="url(#limbWarm)" stroke="#8A6A2A" stroke-width="0.45"/>
-    <path d="M 5 0 Q 12 9 18 18" fill="none" stroke="#F4E4C1" stroke-width="0.7" opacity="0.45"/>
-    <!-- 右攀岩鞋 -->
-    <path d="M 17 19 L 26 15 L 28 19 L 18 24 Z" fill="#3A2A0A" stroke="#8A6A2A" stroke-width="0.45"/>
-
-    <!-- 左腿（高位蹬点） -->
-    <path d="M -2 -4 Q -8 6 -13 17 L -6 20 Q -2 9 4 0 Z"
-          fill="url(#limbWarm)" stroke="#8A6A2A" stroke-width="0.45"/>
-    <path d="M -1 -2 Q -6 7 -11 16" fill="none" stroke="#F4E4C1" stroke-width="0.7" opacity="0.45"/>
-    <!-- 左攀岩鞋 -->
-    <path d="M -13 17 L -19 21 L -16 25 L -10 21 Z" fill="#3A2A0A" stroke="#8A6A2A" stroke-width="0.45"/>
-
-    <!-- 躯干（贴壁侧身） -->
-    <path d="M -7 -34 Q -2 -18 1 -6 Q 4 3 8 7 L 13 2 Q 10 -4 7 -15 Q 3 -28 -2 -36 Z"
-          fill="url(#torsoGrad)" stroke="#8A6A2A" stroke-width="0.55"/>
-    <path d="M -4 -28 Q 0 -14 2 -4" fill="none" stroke="#E8D4AA" stroke-width="0.8" opacity="0.35"/>
-
-    <!-- 右臂（侧向抓点） -->
-    <path d="M -3 -32 Q -7 -19 -11 -9 Q -13 -3 -15 1 L -10 3 Q -7 -3 -5 -9 Q -3 -19 1 -30 Z"
-          fill="url(#limbWarm)" stroke="#8A6A2A" stroke-width="0.45"/>
-    <path d="M -1 -30 Q -5 -18 -9 -8" fill="none" stroke="#F4E4C1" stroke-width="0.7" opacity="0.45"/>
-    <!-- 右手手套 -->
-    <circle cx="-13" cy="2" r="2.8" fill="#3A2A0A" stroke="#8A6A2A" stroke-width="0.45"/>
-
-    <!-- 左臂（向上抓高岩点） -->
-    <path d="M -7 -34 Q -15 -42 -23 -48 Q -29 -52 -33 -54 L -31 -49 Q -27 -45 -21 -41 Q -13 -35 -5 -29 Z"
-          fill="url(#limbWarm)" stroke="#8A6A2A" stroke-width="0.45"/>
-    <path d="M -9 -33 Q -17 -41 -24 -47" fill="none" stroke="#F4E4C1" stroke-width="0.8" opacity="0.5"/>
-    <!-- 左手手套 -->
-    <circle cx="-32" cy="-53" r="2.8" fill="#3A2A0A" stroke="#8A6A2A" stroke-width="0.45"/>
-
-    <!-- 头部（侧向观察） -->
-    <ellipse cx="-8" cy="-42" rx="7.5" ry="8" fill="url(#headGrad)" stroke="#8A6A2A" stroke-width="0.5"/>
-    <!-- 攀登头盔 -->
-    <path d="M -15 -44 Q -15 -52 -8 -52 Q -1 -52 -1 -44 L -3 -42 Q -3 -49 -8 -49 Q -13 -49 -13 -42 Z"
-          fill="#B8922A" stroke="#E8D4AA" stroke-width="0.45"/>
-    <!-- 头灯 -->
-    <circle cx="-13" cy="-48" r="1.6" fill="#F4E4C1"/>
-    <circle cx="-13" cy="-48" r="3.5" fill="#F4E4C1" opacity="0.3"/>
-
-    <!-- 安全带（腰带 + 腿环） -->
-    <path d="M -3 0 Q 4 2 10 1" fill="none" stroke="#B8922A" stroke-width="2" opacity="0.85"/>
-    <path d="M 2 1 Q 6 6 4 10" fill="none" stroke="#B8922A" stroke-width="1.5" opacity="0.75"/>
-    <path d="M -2 -2 Q -6 4 -8 9" fill="none" stroke="#B8922A" stroke-width="1.5" opacity="0.75"/>
-    <!-- 安全锁扣 -->
-    <circle cx="4" cy="5" r="1.6" fill="none" stroke="#E8D4AA" stroke-width="0.6"/>
+  <!-- 设备之间的 peer 连接 -->
+  <g fill="none" stroke-width="0.5">
+    <line class="iot-peer ip1" x1="660" y1="2020" x2="770" y2="1975" stroke="#8A6A2A" opacity="0.6"/>
+    <line class="iot-peer ip2" x1="770" y1="1975" x2="850" y2="2030" stroke="#8A6A2A" opacity="0.6"/>
+    <line class="iot-peer ip3" x1="850" y1="2030" x2="870" y2="2100" stroke="#8A6A2A" opacity="0.5"/>
+    <line class="iot-peer ip1" x1="870" y1="2100" x2="810" y2="2170" stroke="#8A6A2A" opacity="0.5"/>
+    <line class="iot-peer ip2" x1="810" y1="2170" x2="690" y2="2160" stroke="#8A6A2A" opacity="0.5"/>
+    <line class="iot-peer ip3" x1="690" y1="2160" x2="660" y2="2020" stroke="#8A6A2A" opacity="0.6"/>
   </g>
+
+  <!-- 设备节点 · 方形（PLC） -->
+  <g fill="none" stroke="#E8D4AA" stroke-width="1.1">
+    <rect class="device v1" x="654" y="2014" width="12" height="12" fill="#1A1408"/>
+    <rect class="device v4" x="844" y="2024" width="12" height="12" fill="#1A1408"/>
+  </g>
+  <!-- 设备节点 · 三角（传感器） -->
+  <g fill="none" stroke="#E8D4AA" stroke-width="1.1" stroke-linejoin="round">
+    <path class="device v2" d="M 690 2154 L 696 2166 L 684 2166 Z" fill="#1A1408"/>
+    <path class="device v5" d="M 770 1969 L 776 1981 L 764 1981 Z" fill="#1A1408"/>
+  </g>
+  <!-- 设备节点 · 菱形（执行器） -->
+  <g fill="none" stroke="#E8D4AA" stroke-width="1.1">
+    <path class="device v3" d="M 810 2163 L 817 2170 L 810 2177 L 803 2170 Z" fill="#1A1408"/>
+    <path class="device v6" d="M 870 2093 L 877 2100 L 870 2107 L 863 2100 Z" fill="#1A1408"/>
+  </g>
+
+  <!-- 网关（六边形） -->
+  <g class="gateway">
+    <path d="M 750 2072 L 762 2079 L 762 2093 L 750 2100 L 738 2093 L 738 2079 Z"
+          fill="#8A6A2A" stroke="#E8D4AA" stroke-width="1"/>
+    <circle cx="750" cy="2086" r="2.5" fill="#F4E4C1"/>
+  </g>
+  <text x="750" y="2058" text-anchor="middle" font-family="Cinzel, Trajan Pro, Times New Roman, serif" font-size="6.5" fill="#8A6A2A" letter-spacing="1">GATEWAY</text>
+
+  <!-- 网络标注 -->
+  <text x="750" y="2215" text-anchor="middle" font-family="Cormorant Garamond, Garamond, Georgia, serif" font-size="9" fill="#8A6A2A" font-style="italic" letter-spacing="2">edge-to-cloud telemetry</text>
 </g>
 
 <!-- Metrics · 10+ -->
