@@ -1,0 +1,230 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 2100" width="800" height="2100">
+  <defs>
+    <!-- ═══ 巴洛克色板 ═══ -->
+    <linearGradient id="goldSheen" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8A6A2A" stop-opacity="0"/>
+      <stop offset="45%" stop-color="#E8D4AA" stop-opacity="0.55"/>
+      <stop offset="55%" stop-color="#E8D4AA" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#8A6A2A" stop-opacity="0"/>
+      <animate attributeName="x1" values="-1;1" dur="8s" repeatCount="indefinite"/>
+      <animate attributeName="x2" values="0;2" dur="8s" repeatCount="indefinite"/>
+    </linearGradient>
+    <radialGradient id="candleGlow" cx="30%" cy="8%" r="60%">
+      <stop offset="0%" stop-color="#E8D4AA" stop-opacity="0.12"/>
+      <stop offset="60%" stop-color="#1A1408" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <!-- 涡卷节点（可复用） -->
+    <g id="volute">
+      <path d="M0,0 C8,-12 22,-12 24,0 C26,10 14,16 6,10 C0,6 2,-2 8,-2" 
+            fill="none" stroke="#B8922A" stroke-width="1.2" opacity="0.75"/>
+      <circle cx="8" cy="-2" r="1.8" fill="#E8D4AA"/>
+    </g>
+    <!-- 粒子 -->
+    <circle id="mote" r="1.5" fill="#E8D4AA" opacity="0.6">
+      <animate attributeName="opacity" values="0.2;0.8;0.2" dur="5s" repeatCount="indefinite"/>
+    </circle>
+  </defs>
+
+  <!-- ═══ 基底：地窖暗部 + 烛光 ═══ -->
+  <rect width="800" height="2100" fill="#0D0B08"/>
+  <rect width="800" height="2100" fill="url(#candleGlow)"/>
+
+  <!-- ═══ 外框：巴洛克双层金线 ═══ -->
+  <rect x="24" y="24" width="752" height="2052" fill="none" stroke="#8A6A2A" stroke-width="1" opacity="0.5"/>
+  <rect x="32" y="32" width="736" height="2036" fill="none" stroke="#B8922A" stroke-width="0.6" opacity="0.35" stroke-dasharray="2 6"/>
+  <!-- 四角涡卷 -->
+  <use href="#volute" x="24" y="24" transform="translate(24,24) scale(1.6)"/>
+  <use href="#volute" x="724" y="24" transform="translate(724,24) scale(-1.6,1.6)"/>
+  <use href="#volute" x="24" y="2044" transform="translate(24,2044) scale(1.6,-1.6)"/>
+  <use href="#volute" x="724" y="2044" transform="translate(724,2044) scale(-1.6,-1.6)"/>
+
+  <!-- ═══ 漂浮粒子 ═══ -->
+  <g opacity="0.7">
+    <use href="#mote" x="120" y="180"><animate attributeName="cy" values="180;140;180" dur="12s" repeatCount="indefinite"/></use>
+    <use href="#mote" x="680" y="360"><animate attributeName="cy" values="360;310;360" dur="15s" repeatCount="indefinite"/></use>
+    <use href="#mote" x="90" y="620"><animate attributeName="cy" values="620;580;620" dur="10s" repeatCount="indefinite"/></use>
+    <use href="#mote" x="710" y="880"><animate attributeName="cy" values="880;840;880" dur="14s" repeatCount="indefinite"/></use>
+    <use href="#mote" x="150" y="1280"><animate attributeName="cy" values="1280;1240;1280" dur="11s" repeatCount="indefinite"/></use>
+    <use href="#mote" x="660" y="1620"><animate attributeName="cy" values="1620;1580;1620" dur="13s" repeatCount="indefinite"/></use>
+  </g>
+
+  <!-- ═══════════════════════════════════════════
+       HERO · 名字与立场
+       ═══════════════════════════════════════════ -->
+  <g text-anchor="middle">
+    <text x="400" y="150" font-family="Cinzel, Georgia, serif" font-size="52" font-weight="700" 
+          fill="#E8D4AA" letter-spacing="6" filter="url(#softGlow)">HAPPY-MOMO</text>
+    <rect x="180" y="170" width="440" height="1" fill="#8A6A2A" opacity="0.6"/>
+    <text x="400" y="215" font-family="Cormorant Garamond, Georgia, serif" font-size="18" 
+          fill="#B8922A" letter-spacing="2" font-style="italic">Where the factory floor meets the reasoning layer</text>
+    <text x="400" y="248" font-family="Cormorant Garamond, Georgia, serif" font-size="13" 
+          fill="#C49A6A" opacity="0.85" letter-spacing="1">OT × IT × AI · Craft as Discipline</text>
+  </g>
+  <!-- 名字上的光泽扫过 -->
+  <rect x="160" y="105" width="480" height="60" fill="url(#goldSheen)" opacity="0.5"/>
+
+  <!-- ═══ 分隔：金线 + 涡卷节点 ═══ -->
+  <g transform="translate(400,300)">
+    <line x1="-280" y1="0" x2="-20" y2="0" stroke="#8A6A2A" stroke-width="0.8" opacity="0.5"/>
+    <line x1="20" y1="0" x2="280" y2="0" stroke="#8A6A2A" stroke-width="0.8" opacity="0.5"/>
+    <use href="#volute" transform="scale(0.9)"/>
+  </g>
+
+  <!-- ═══════════════════════════════════════════
+       ABOUT · 散文化
+       ═══════════════════════════════════════════ -->
+  <g font-family="Cormorant Garamond, Georgia, serif">
+    <text x="80" y="370" font-family="Cinzel, Georgia, serif" font-size="16" fill="#E8D4AA" letter-spacing="3">ABOUT</text>
+    <line x1="80" y1="382" x2="220" y2="382" stroke="#8A6A2A" stroke-width="0.6" opacity="0.6"/>
+    
+    <!-- 首字母下沉 -->
+    <text x="80" y="430" font-family="Cinzel, Georgia, serif" font-size="64" fill="#B8922A" opacity="0.9">I</text>
+    <text x="118" y="418" font-size="17" fill="#E8D4AA" opacity="0.88" line-height="1.6">
+      <tspan x="118" dy="0">began in mechanical and vehicle engineering — a discipline that</tspan>
+      <tspan x="118" dy="26">instils respect for the constraints of the physical world, the</tspan>
+      <tspan x="118" dy="26">boundaries of engineering tolerance, and the sheer weight of a</tspan>
+      <tspan x="118" dy="26">real manufacturing process.</tspan>
+    </text>
+    <text x="80" y="540" font-size="17" fill="#E8D4AA" opacity="0.85">
+      <tspan x="80" dy="0">A subsequent pivot into intelligent-manufacturing knowledge</tspan>
+      <tspan x="80" dy="26">management, NLP, and knowledge graphs surfaced a more</tspan>
+      <tspan x="80" dy="26">fundamental question:</tspan>
+    </text>
+    <text x="80" y="632" font-size="19" fill="#E8D4AA" font-style="italic" opacity="0.95">
+      <tspan x="80" dy="0">How does industrial knowledge get structured, organized,</tspan>
+      <tspan x="80" dy="28">and reused — and ultimately put to work by intelligent systems?</tspan>
+    </text>
+    <text x="80" y="700" font-size="17" fill="#E8D4AA" opacity="0.8">
+      <tspan x="80" dy="0">I now operate at the seam between OT and IT. Fluent in the</tspan>
+      <tspan x="80" dy="26">realities of the shop floor, capable of architecting the software</tspan>
+      <tspan x="80" dy="26">backbone, and able to land knowledge-graph and AI methods</tspan>
+      <tspan x="80" dy="26">inside genuine industrial settings.</tspan>
+    </text>
+    <text x="80" y="812" font-size="17" fill="#C49A6A" opacity="0.75" font-style="italic">
+      <tspan x="80" dy="0">Integration is only the starting line. Whether something can</tspan>
+      <tspan x="80" dy="26">be built and whether it deserves to be built — and to what</tspan>
+      <tspan x="80" dy="26">standard — are distinct questions.</tspan>
+    </text>
+  </g>
+
+  <!-- ═══ 分隔 ═══ -->
+  <g transform="translate(400,890)">
+    <line x1="-280" y1="0" x2="-20" y2="0" stroke="#8A6A2A" stroke-width="0.8" opacity="0.5"/>
+    <line x1="20" y1="0" x2="280" y2="0" stroke="#8A6A2A" stroke-width="0.8" opacity="0.5"/>
+    <use href="#volute" transform="scale(0.9)"/>
+  </g>
+
+  <!-- ═══════════════════════════════════════════
+       CRAFT · 四条宣言
+       ═══════════════════════════════════════════ -->
+  <g font-family="Cormorant Garamond, Georgia, serif">
+    <text x="80" y="960" font-family="Cinzel, Georgia, serif" font-size="16" fill="#E8D4AA" letter-spacing="3">WHAT I CARE ABOUT</text>
+    <line x1="80" y1="972" x2="260" y2="972" stroke="#8A6A2A" stroke-width="0.6" opacity="0.6"/>
+    
+    <g transform="translate(80,1015)">
+      <use href="#volute" transform="scale(0.7)"/>
+      <text x="36" y="5" font-size="16" fill="#E8D4AA" opacity="0.9">
+        <tspan font-family="Cinzel, Georgia, serif" font-size="14" fill="#B8922A" letter-spacing="1">CREATIVITY</tspan>
+        <tspan x="36" dy="24" font-size="15" opacity="0.8">Locating room inside constraints, structure inside complexity.</tspan>
+      </text>
+    </g>
+    <g transform="translate(80,1105)">
+      <use href="#volute" transform="scale(0.7)"/>
+      <text x="36" y="5" font-size="16" fill="#E8D4AA" opacity="0.9">
+        <tspan font-family="Cinzel, Georgia, serif" font-size="14" fill="#B8922A" letter-spacing="1">AGENCY</tspan>
+        <tspan x="36" dy="24" font-size="15" opacity="0.8">Defining the problem where no one asked, then carrying it to a result that holds.</tspan>
+      </text>
+    </g>
+    <g transform="translate(80,1195)">
+      <use href="#volute" transform="scale(0.7)"/>
+      <text x="36" y="5" font-size="16" fill="#E8D4AA" opacity="0.9">
+        <tspan font-family="Cinzel, Georgia, serif" font-size="14" fill="#B8922A" letter-spacing="1">TASTE</tspan>
+        <tspan x="36" dy="24" font-size="15" opacity="0.8">Code is material; the system is the work. The same applies to prose and interface.</tspan>
+      </text>
+    </g>
+    <g transform="translate(80,1285)">
+      <use href="#volute" transform="scale(0.7)"/>
+      <text x="36" y="5" font-size="16" fill="#E8D4AA" opacity="0.9">
+        <tspan font-family="Cinzel, Georgia, serif" font-size="14" fill="#B8922A" letter-spacing="1">APPLIED AI</tspan>
+        <tspan x="36" dy="24" font-size="15" opacity="0.8">Placing the technology inside real constraints and asking whose problem it solved.</tspan>
+      </text>
+    </g>
+  </g>
+
+  <!-- ═══ 分隔 ═══ -->
+  <g transform="translate(400,1390)">
+    <line x1="-280" y1="0" x2="-20" y2="0" stroke="#8A6A2A" stroke-width="0.8" opacity="0.5"/>
+    <line x1="20" y1="0" x2="280" y2="0" stroke="#8A6A2A" stroke-width="0.8" opacity="0.5"/>
+    <use href="#volute" transform="scale(0.9)"/>
+  </g>
+
+  <!-- ═══════════════════════════════════════════
+       ON AI
+       ═══════════════════════════════════════════ -->
+  <g font-family="Cormorant Garamond, Georgia, serif">
+    <text x="80" y="1460" font-family="Cinzel, Georgia, serif" font-size="16" fill="#E8D4AA" letter-spacing="3">ON AI</text>
+    <line x1="80" y1="1472" x2="180" y2="1472" stroke="#8A6A2A" stroke-width="0.6" opacity="0.6"/>
+    <text x="80" y="1510" font-size="17" fill="#E8D4AA" opacity="0.85">
+      <tspan x="80" dy="0">Neither reverence nor avoidance. I deploy AI in live environments</tspan>
+      <tspan x="80" dy="26">— inside messy data, entrenched habits, and organizational inertia.</tspan>
+    </text>
+    <text x="80" y="1580" font-size="18" fill="#E8D4AA" font-style="italic" opacity="0.95">
+      <tspan x="80" dy="0">AI amplifies judgment; it does not replace it.</tspan>
+    </text>
+    <text x="80" y="1620" font-size="16" fill="#C49A6A" opacity="0.75">
+      <tspan x="80" dy="0">Taking the black box apart until model behavior becomes legible,</tspan>
+      <tspan x="80" dy="24">debuggable, and worthy of trust.</tspan>
+    </text>
+  </g>
+
+  <!-- ═══ 分隔 ═══ -->
+  <g transform="translate(400,1690)">
+    <line x1="-280" y1="0" x2="-20" y2="0" stroke="#8A6A2A" stroke-width="0.8" opacity="0.5"/>
+    <line x1="20" y1="0" x2="280" y2="0" stroke="#8A6A2A" stroke-width="0.8" opacity="0.5"/>
+    <use href="#volute" transform="scale(0.9)"/>
+  </g>
+
+  <!-- ═══════════════════════════════════════════
+       SELECTED BUILDS + METRICS（共用底部画框）
+       ═══════════════════════════════════════════ -->
+  <g font-family="Cormorant Garamond, Georgia, serif">
+    <text x="80" y="1760" font-family="Cinzel, Georgia, serif" font-size="16" fill="#E8D4AA" letter-spacing="3">SELECTED BUILDS</text>
+    <line x1="80" y1="1772" x2="260" y2="1772" stroke="#8A6A2A" stroke-width="0.6" opacity="0.6"/>
+    
+    <!-- 项目列表，用涡卷作为项目符号 -->
+    <g transform="translate(80,1815)">
+      <use href="#volute" transform="scale(0.6)"/>
+      <text x="30" y="4" font-size="15" fill="#E8D4AA" opacity="0.85">FastMe-RAG-Frame · Manufacturing RAG</text>
+    </g>
+    <g transform="translate(80,1855)">
+      <use href="#volute" transform="scale(0.6)"/>
+      <text x="30" y="4" font-size="15" fill="#E8D4AA" opacity="0.85">EASY-Knowledge-Graph-Builder · KG automation</text>
+    </g>
+    <g transform="translate(80,1895)">
+      <use href="#volute" transform="scale(0.6)"/>
+      <text x="30" y="4" font-size="15" fill="#E8D4AA" opacity="0.85">Transformer2edge · Edge AI deployment</text>
+    </g>
+    <g transform="translate(80,1935)">
+      <use href="#volute" transform="scale(0.6)"/>
+      <text x="30" y="4" font-size="15" fill="#E8D4AA" opacity="0.85">transformer-visualizer · Interpretability</text>
+    </g>
+    <g transform="translate(80,1975)">
+      <use href="#volute" transform="scale(0.6)"/>
+      <text x="30" y="4" font-size="15" fill="#E8D4AA" opacity="0.85">Infinite-Space · Spatial thinking tool</text>
+    </g>
+    <g transform="translate(80,2015)">
+      <use href="#volute" transform="scale(0.6)"/>
+      <text x="30" y="4" font-size="15" fill="#E8D4AA" opacity="0.85">ClaudeCode-Dashboard · AI-assisted development</text>
+    </g>
+
+    <!-- 底部收束句 -->
+    <text x="400" y="2070" text-anchor="middle" font-size="14" fill="#B8922A" font-style="italic" letter-spacing="1">
+      From the one who does the work — to the one who defines how the work is done.
+    </text>
+  </g>
+
+</svg>
