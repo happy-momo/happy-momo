@@ -1,23 +1,28 @@
-<img src="https://raw.githubusercontent.com/happy-momo/happy-momo/main/assets/canvas.svg" alt="Architecting Intelligence" width="100%" />
-
 <div align="center">
-  <table>
-    <tr>
-      <td align="center">
-        <img src="https://github-readme-stats.vercel.app/api?username=happy-momo&show_icons=true&theme=tokyonight&hide_border=true&border_radius=12&bg_color=0D1117&title_color=FBBF24&icon_color=F59E0B&text_color=E2E8F0" alt="GitHub Stats" />
-      </td>
-      <td align="center">
-        <img src="https://github-readme-streak-stats.herokuapp.com/?user=happy-momo&theme=tokyonight&hide_border=true&border_radius=12&background=0D1117&ring=FBBF24&fire=F59E0B&currStreakNum=F59E0B" alt="GitHub Streak" />
-      </td>
-    </tr>
-  </table>
-
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=happy-momo&layout=compact&theme=tokyonight&hide_border=true&border_radius=12&bg_color=0D1117&title_color=FBBF24&text_color=E2E8F0" alt="Top Languages" width="62%" />
+  <img src="./assets/scroll.svg" alt="Happy Momo — Industrial Intelligence" width="100%" />
 </div>
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/happy-momo/happy-momo/output/github-contribution-grid-snake-dark.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/happy-momo/happy-momo/output/github-contribution-grid-snake.svg" />
-  <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/happy-momo/happy-momo/output/github-contribution-grid-snake.svg" width="100%" />
-</picture>
+<br/>
 
+<div align="center">
+  <img height="180" src="https://github-readme-stats.vercel.app/api?username=happy-momo&show_icons=true&bg_color=0D0B08&title_color=E8D4AA&text_color=B8922A&icon_color=E8D4AA&border_color=8A6A2A&hide_border=false&include_all_commits=true&count_private=true" />
+  <img height="180" src="https://github-readme-stats.vercel.app/api/top-langs/?username=happy-momo&layout=compact&bg_color=0D0B08&title_color=E8D4AA&text_color=B8922A&border_color=8A6A2A&hide_border=false&langs_count=8" />
+</div>
+
+<br/>
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/happy-momo/happy-momo/output/github-contribution-grid-snake-dark.svg" alt="Contribution Snake" width="100%" />
+</div>
+
+<br/>
+
+<div align="center">
+  <a href="https://happy-momo.github.io/momo.github.io/">
+    <img src="./assets/btn-site.svg" alt="Personal Site" />
+  </a>
+  &nbsp;&nbsp;&nbsp;
+  <a href="https://happy-momo.github.io/momo-projects.github.io/">
+    <img src="./assets/btn-projects.svg" alt="Projects" />
+  </a>
+</div>
