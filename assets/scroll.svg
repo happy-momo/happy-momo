@@ -1,6 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 2600" width="960" height="2600">
 <style>
-  /* ═══════ 入场 ═══════ */
   .fade-in { animation: fadeIn 1.4s ease-out forwards; opacity: 0; }
   .rise-in { animation: riseIn 1.2s ease-out forwards; opacity: 0; }
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -16,13 +15,11 @@
   .d65{animation-delay:6.5s}.d68{animation-delay:6.8s}.d72{animation-delay:7.2s}
   .d76{animation-delay:7.6s}.d80{animation-delay:8s}
 
-  /* ═══════ 环境光 ═══════ */
   .breathe { animation: breathe 7s ease-in-out infinite; }
   .frame-pulse { animation: framePulse 9s ease-in-out infinite; }
   @keyframes breathe { 0%,100% { opacity:.015; } 50% { opacity:.05; } }
   @keyframes framePulse { 0%,100% { opacity:.32; } 50% { opacity:.52; } }
 
-  /* ═══════ 漂浮粒子 ═══════ */
   .mote-a{animation:floatA 14s ease-in-out infinite}
   .mote-b{animation:floatB 17s ease-in-out infinite}
   .mote-c{animation:floatC 12s ease-in-out infinite}
@@ -36,15 +33,12 @@
   @keyframes floatE{0%,100%{transform:translateY(0);opacity:.12}50%{transform:translateY(-65px);opacity:.58}}
   @keyframes floatF{0%,100%{transform:translateY(0);opacity:.10}50%{transform:translateY(-60px);opacity:.52}}
 
-  /* ═══════ 分隔线 ═══════ */
   .rule-grow { stroke-dasharray: 370 370; stroke-dashoffset: 370; animation: grow 1.2s ease-out forwards; }
   @keyframes grow { to { stroke-dashoffset: 0; } }
 
-  /* ═══════ 涡卷点 ═══════ */
   .vol-dot { animation: volPulse 4s ease-in-out infinite; }
   @keyframes volPulse { 0%,100%{r:1.4} 50%{r:2.3} }
 
-  /* ═══════ 头部轨道 ═══════ */
   .ring-1 { animation: ringFlow1 28s linear infinite; }
   .ring-2 { animation: ringFlow2 38s linear infinite; }
   .ring-3 { animation: ringFlow3 48s linear infinite; }
@@ -52,55 +46,34 @@
   @keyframes ringFlow2 { from{stroke-dashoffset:0} to{stroke-dashoffset:300} }
   @keyframes ringFlow3 { from{stroke-dashoffset:0} to{stroke-dashoffset:-380} }
 
-  /* ═══════ 星光 ═══════ */
   .star { animation: twinkle 5s ease-in-out infinite; }
   .s1{animation-delay:.3s}.s2{animation-delay:1.1s}.s3{animation-delay:.7s}
   .s4{animation-delay:1.8s}.s5{animation-delay:.9s}.s6{animation-delay:2.2s}
   .s7{animation-delay:1.4s}.s8{animation-delay:.5s}
   @keyframes twinkle { 0%,100%{opacity:.15} 50%{opacity:.9} }
 
-  /* ═══════ 名字光扫 ═══════ */
   .light-sweep { animation: sweep 9s linear infinite; }
   @keyframes sweep { from{transform:translateX(-500px)} to{transform:translateX(500px)} }
 
-  /* ═══════ 第一章 太阳系 ═══════ */
   .sun-core { animation: sunPulse 6s ease-in-out infinite; }
   .sun-halo { animation: haloPulse 6s ease-in-out infinite; }
   @keyframes sunPulse { 0%,100%{opacity:.85} 50%{opacity:1} }
   @keyframes haloPulse { 0%,100%{opacity:.15} 50%{opacity:.30} }
 
-  .orbit-a {
-    transform-box: view-box;
-    transform-origin: 760px 640px;
-    animation: orbitA 26s linear infinite;
-  }
-  .orbit-b {
-    transform-box: view-box;
-    transform-origin: 760px 640px;
-    animation: orbitB 40s linear infinite;
-  }
-  .orbit-c {
-    transform-box: view-box;
-    transform-origin: 760px 640px;
-    animation: orbitC 56s linear infinite;
-  }
+  .orbit-a { transform-box: view-box; transform-origin: 760px 640px; animation: orbitA 26s linear infinite; }
+  .orbit-b { transform-box: view-box; transform-origin: 760px 640px; animation: orbitB 40s linear infinite; }
+  .orbit-c { transform-box: view-box; transform-origin: 760px 640px; animation: orbitC 56s linear infinite; }
   @keyframes orbitA { from{transform:rotate(0)} to{transform:rotate(360deg)} }
   @keyframes orbitB { from{transform:rotate(360deg)} to{transform:rotate(0)} }
   @keyframes orbitC { from{transform:rotate(0)} to{transform:rotate(360deg)} }
 
-  /* ═══════ 第二章 掷铁饼者 ═══════ */
   .discobolus { animation: statueReveal 3s ease-out forwards; opacity: 0; }
-  @keyframes statueReveal { from{opacity:0} to{opacity:.9} }
-  .statue-light {
-    animation: statueSweep 8s ease-in-out infinite;
-    transform-box: view-box;
-    transform-origin: 790px 1200px;
-  }
-  @keyframes statueSweep { 0%,100%{transform:translateX(-30px)} 50%{transform:translateX(30px)} }
-  .disc-rim { animation: discSpin 12s linear infinite; transform-box: fill-box; transform-origin: center; }
+  @keyframes statueReveal { from{opacity:0} to{opacity:1} }
+  .statue-light { animation: statueSweep 8s ease-in-out infinite; transform-box: view-box; transform-origin: 740px 1195px; }
+  @keyframes statueSweep { 0%,100%{transform:translateX(-25px)} 50%{transform:translateX(25px)} }
+  .disc-rim { animation: discSpin 14s linear infinite; transform-box: fill-box; transform-origin: center; }
   @keyframes discSpin { from{transform:rotate(0)} to{transform:rotate(360deg)} }
 
-  /* ═══════ 第三章 电脑+算法 ═══════ */
   .screen-glow { animation: screenGlow 4s ease-in-out infinite; }
   @keyframes screenGlow { 0%,100%{opacity:.7} 50%{opacity:1} }
   .nn-node { animation: nodePulse 3s ease-in-out infinite; }
@@ -108,24 +81,21 @@
   .n4{animation-delay:.3s}.n5{animation-delay:.7s}.n6{animation-delay:1.1s}
   .n7{animation-delay:.6s}.n8{animation-delay:1.0s}
   @keyframes nodePulse { 0%,100%{opacity:.4;r:2} 50%{opacity:1;r:3} }
-
   .data-flow { stroke-dasharray: 6 6; animation: flow 2.5s linear infinite; }
   .f1{animation-delay:0s}.f2{animation-delay:.3s}.f3{animation-delay:.6s}
   .f4{animation-delay:.9s}.f5{animation-delay:1.2s}.f6{animation-delay:1.5s}
   @keyframes flow { from{stroke-dashoffset:0} to{stroke-dashoffset:-24} }
 
-  /* ═══════ 第四章 登山小人 ═══════ */
-  .climber { animation: climbBob 2.2s ease-in-out infinite; }
+  .climber { animation: climbBob 2.4s ease-in-out infinite; }
   @keyframes climbBob {
-    0%,100%{transform:translate(0,0)}
-    50%{transform:translate(0,-6px)}
+    0%,100%{transform:translate(0,0) rotate(-2deg)}
+    50%{transform:translate(0,-5px) rotate(1deg)}
   }
   .summit-light { animation: summitPulse 5s ease-in-out infinite; }
   @keyframes summitPulse { 0%,100%{opacity:.3} 50%{opacity:.9} }
-  .path-dash { stroke-dasharray: 3 5; animation: pathFlow 3s linear infinite; }
-  @keyframes pathFlow { from{stroke-dashoffset:0} to{stroke-dashoffset:-16} }
+  .rope-sway { animation: ropeSway 4s ease-in-out infinite; transform-box: fill-box; transform-origin: top; }
+  @keyframes ropeSway { 0%,100%{transform:rotate(-3deg)} 50%{transform:rotate(3deg)} }
 
-  /* ═══════ 十个项目点 ═══════ */
   .proj-dot { animation: projPulse 3.5s ease-in-out infinite; }
   .p1{animation-delay:0s}.p2{animation-delay:.35s}.p3{animation-delay:.7s}
   .p4{animation-delay:1.05s}.p5{animation-delay:1.4s}.p6{animation-delay:1.75s}
@@ -133,21 +103,12 @@
   .p10{animation-delay:3.15s}
   @keyframes projPulse { 0%,100%{opacity:.3;r:2.5} 50%{opacity:1;r:3.5} }
 
-  /* ═══════ Footer ═══════ */
   .flow-dot{animation: flowDot 7s ease-in-out infinite}
-  @keyframes flowDot {
-    0%,100%{transform:translateX(-140px);opacity:.2}
-    50%{transform:translateX(140px);opacity:.95}
-  }
+  @keyframes flowDot { 0%,100%{transform:translateX(-140px);opacity:.2} 50%{transform:translateX(140px);opacity:.95} }
   .footer-orn{animation: ornPulse 5s ease-in-out infinite}
-  @keyframes ornPulse {
-    0%,100%{opacity:.5;transform:rotate(45deg) scale(.9)}
-    50%{opacity:1;transform:rotate(45deg) scale(1.15)}
-  }
+  @keyframes ornPulse { 0%,100%{opacity:.5;transform:rotate(45deg) scale(.9)} 50%{opacity:1;transform:rotate(45deg) scale(1.15)} }
 
-  @media (prefers-reduced-motion: reduce) {
-    * { animation: none !important; opacity: 1 !important; }
-  }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; opacity: 1 !important; } }
 </style>
 
 <defs>
@@ -170,6 +131,41 @@
     <stop offset="0.6" stop-color="#B8922A" stop-opacity="0.6"/>
     <stop offset="1" stop-color="#8A6A2A" stop-opacity="0"/>
   </radialGradient>
+
+  <!-- 青铜体块渐变 -->
+  <linearGradient id="limbWarm" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#5A4418"/>
+    <stop offset="0.35" stop-color="#B8922A"/>
+    <stop offset="0.6" stop-color="#E8D4AA"/>
+    <stop offset="1" stop-color="#4A3A1A"/>
+  </linearGradient>
+  <linearGradient id="torsoGrad" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#4A3A1A"/>
+    <stop offset="0.45" stop-color="#8A6A2A"/>
+    <stop offset="0.75" stop-color="#C49A6A"/>
+    <stop offset="1" stop-color="#3A2A0A"/>
+  </linearGradient>
+  <linearGradient id="headGrad" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#6B4F1A"/>
+    <stop offset="0.5" stop-color="#C49A6A"/>
+    <stop offset="1" stop-color="#4A3A1A"/>
+  </linearGradient>
+  <linearGradient id="discGrad" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#E8D4AA"/>
+    <stop offset="0.5" stop-color="#B8922A"/>
+    <stop offset="1" stop-color="#5A4418"/>
+  </linearGradient>
+  <linearGradient id="packGrad" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#3A2A0A"/>
+    <stop offset="0.5" stop-color="#8A6A2A"/>
+    <stop offset="1" stop-color="#4A3A1A"/>
+  </linearGradient>
+  <linearGradient id="rockGrad" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#1A1408"/>
+    <stop offset="0.6" stop-color="#2A2010"/>
+    <stop offset="1" stop-color="#0D0B08"/>
+  </linearGradient>
+
   <filter id="grain" x="0" y="0" width="100%" height="100%">
     <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="5"/>
     <feColorMatrix type="saturate" values="0"/>
@@ -178,9 +174,8 @@
     <feGaussianBlur stdDeviation="3" result="b"/>
     <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
   </filter>
-  <filter id="sunHalo">
-    <feGaussianBlur stdDeviation="8"/>
-  </filter>
+  <filter id="sunHalo"><feGaussianBlur stdDeviation="8"/></filter>
+
   <g id="vol">
     <path d="M0,0 C7,-11 20,-11 22,0 C24,9 13,15 6,9 C0,5 2,-2 7,-2"
           fill="none" stroke="#B8922A" stroke-width="1.1" opacity="0.7"/>
@@ -194,13 +189,11 @@
   <path id="arc" d="M 170 1720 Q 480 1656 790 1720" fill="none"/>
 </defs>
 
-<!-- 基底 -->
 <rect width="960" height="2600" fill="#0D0B08"/>
 <rect width="960" height="2600" fill="url(#candle)"/>
 <rect width="960" height="2600" filter="url(#grain)" opacity="0.03"/>
 <rect class="breathe" width="960" height="2600" fill="#B8922A"/>
 
-<!-- 画框 -->
 <rect class="frame-pulse" x="22" y="22" width="916" height="2556" fill="none" stroke="#8A6A2A" stroke-width="1"/>
 <rect x="32" y="32" width="896" height="2536" fill="none" stroke="#B8922A" stroke-width="0.6" opacity="0.3" stroke-dasharray="2 7"/>
 <use href="#vol" x="22" y="22" transform="translate(22,22) scale(1.5)"/>
@@ -208,7 +201,6 @@
 <use href="#vol" x="22" y="2578" transform="translate(22,2578) scale(1.5,-1.5)"/>
 <use href="#vol" x="938" y="2578" transform="translate(938,2578) scale(-1.5,-1.5)"/>
 
-<!-- 边缘粒子 -->
 <g fill="#F4E4C1">
   <circle class="mote-a" cx="90" cy="240" r="1.5" opacity="0.5"/>
   <circle class="mote-b" cx="880" cy="520" r="1.3" opacity="0.4"/>
@@ -218,19 +210,12 @@
   <circle class="mote-f" cx="890" cy="2020" r="1.3" fill="#C49A6A" opacity="0.4"/>
 </g>
 
-<!-- ═══════════════════════════════════════════════
-     HERO
-     ═══════════════════════════════════════════════ -->
-<ellipse class="ring-1 fade-in d04" cx="480" cy="145" rx="330" ry="88"
-         fill="none" stroke="#B8922A" stroke-width="0.5" stroke-dasharray="1 10" opacity="0.35"/>
-<ellipse class="ring-2 fade-in d06" cx="480" cy="145" rx="290" ry="76"
-         fill="none" stroke="#B8922A" stroke-width="0.45" stroke-dasharray="1 14" opacity="0.3"/>
-<ellipse class="ring-3 fade-in d08" cx="480" cy="145" rx="250" ry="64"
-         fill="none" stroke="#8A6A2A" stroke-width="0.4" stroke-dasharray="1 18" opacity="0.25"/>
-
+<!-- HERO -->
+<ellipse class="ring-1 fade-in d04" cx="480" cy="145" rx="330" ry="88" fill="none" stroke="#B8922A" stroke-width="0.5" stroke-dasharray="1 10" opacity="0.35"/>
+<ellipse class="ring-2 fade-in d06" cx="480" cy="145" rx="290" ry="76" fill="none" stroke="#B8922A" stroke-width="0.45" stroke-dasharray="1 14" opacity="0.3"/>
+<ellipse class="ring-3 fade-in d08" cx="480" cy="145" rx="250" ry="64" fill="none" stroke="#8A6A2A" stroke-width="0.4" stroke-dasharray="1 18" opacity="0.25"/>
 <use href="#vol-large" class="fade-in d10" transform="translate(200,145) scale(-1,1)"/>
 <use href="#vol-large" class="fade-in d10" transform="translate(760,145)"/>
-
 <g fill="#E8D4AA">
   <circle class="star s1" cx="230" cy="92" r="1.3"/>
   <circle class="star s2" cx="330" cy="72" r="1.1"/>
@@ -241,38 +226,21 @@
   <circle class="star s7" cx="180" cy="205" r="1.3" fill="#C49A6A"/>
   <circle class="star s8" cx="790" cy="210" r="1.2" fill="#C49A6A"/>
 </g>
-
 <use href="#vol" x="480" y="72" transform="translate(480,72) scale(1.3)"/>
-<text class="fade-in d02" x="480" y="168" text-anchor="middle"
-      font-family="Cinzel, Trajan Pro, Palatino Linotype, Book Antiqua, Times New Roman, serif"
-      font-size="56" font-weight="700" fill="#E8D4AA" letter-spacing="9" filter="url(#halo)">HAPPY-MOMO</text>
+<text class="fade-in d02" x="480" y="168" text-anchor="middle" font-family="Cinzel, Trajan Pro, Palatino Linotype, Book Antiqua, Times New Roman, serif" font-size="56" font-weight="700" fill="#E8D4AA" letter-spacing="9" filter="url(#halo)">HAPPY-MOMO</text>
 <ellipse class="light-sweep" cx="480" cy="145" rx="80" ry="45" fill="url(#sweepGrad)" pointer-events="none"/>
 <line class="rule-grow d04" x1="200" y1="196" x2="760" y2="196" stroke="url(#rule)" stroke-width="1"/>
-
-<text class="fade-in d10" x="480" y="232" text-anchor="middle"
-      font-family="Cormorant Garamond, Garamond, Georgia, serif"
-      font-size="17" fill="#B8922A" letter-spacing="4" font-style="italic">Rooted in industry. Built in systems. Oriented by intelligence.</text>
-<text class="fade-in d13" x="480" y="266" text-anchor="middle"
-      font-family="Cormorant Garamond, Garamond, Georgia, serif"
-      font-size="13" fill="#C49A6A" font-style="italic" letter-spacing="2">Where the factory floor meets the reasoning layer</text>
+<text class="fade-in d10" x="480" y="232" text-anchor="middle" font-family="Cormorant Garamond, Garamond, Georgia, serif" font-size="17" fill="#B8922A" letter-spacing="4" font-style="italic">Rooted in industry. Built in systems. Oriented by intelligence.</text>
+<text class="fade-in d13" x="480" y="266" text-anchor="middle" font-family="Cormorant Garamond, Garamond, Georgia, serif" font-size="13" fill="#C49A6A" font-style="italic" letter-spacing="2">Where the factory floor meets the reasoning layer</text>
 
 <line class="rule-grow d14" x1="480" y1="330" x2="850" y2="330" stroke="#8A6A2A" stroke-width="0.8"/>
 <line class="rule-grow d14" x1="480" y1="330" x2="110" y2="330" stroke="#8A6A2A" stroke-width="0.8"/>
 <use href="#vol" x="480" y="330" transform="translate(480,330) scale(0.85)"/>
 
-<!-- ═══════════════════════════════════════════════
-     CHAPTER Ⅰ · ABOUT — Solar System
-     ═══════════════════════════════════════════════ -->
-<text class="fade-in d16" x="110" y="392"
-      font-family="Cinzel, Trajan Pro, Times New Roman, serif"
-      font-size="40" fill="#B8922A" letter-spacing="2">Ⅰ</text>
-<text class="fade-in d17" x="172" y="382"
-      font-family="Cinzel, Trajan Pro, Times New Roman, serif"
-      font-size="11" fill="#8A6A2A" letter-spacing="5">A B O U T</text>
-
-<text class="fade-in d19" x="110" y="452"
-      font-family="Cinzel, Trajan Pro, Times New Roman, serif"
-      font-size="58" fill="#E8D4AA">I</text>
+<!-- CHAPTER Ⅰ -->
+<text class="fade-in d16" x="110" y="392" font-family="Cinzel, Trajan Pro, Times New Roman, serif" font-size="40" fill="#B8922A" letter-spacing="2">Ⅰ</text>
+<text class="fade-in d17" x="172" y="382" font-family="Cinzel, Trajan Pro, Times New Roman, serif" font-size="11" fill="#8A6A2A" letter-spacing="5">A B O U T</text>
+<text class="fade-in d19" x="110" y="452" font-family="Cinzel, Trajan Pro, Times New Roman, serif" font-size="58" fill="#E8D4AA">I</text>
 <text class="fade-in d20" font-family="Cormorant Garamond, Garamond, Georgia, serif" font-size="17" fill="#E8D4AA">
   <tspan x="158" y="440">began in mechanical and vehicle engineering — a discipline</tspan>
   <tspan x="158" y="466">that instils respect for physical constraints, engineering</tspan>
@@ -298,49 +266,25 @@
   <tspan x="110" y="884">by taste.</tspan>
 </text>
 
-<!-- 太阳系动画（右侧） -->
 <g class="fade-in d34">
-  <!-- 轨道 -->
   <circle cx="760" cy="640" r="38" fill="none" stroke="#8A6A2A" stroke-width="0.4" opacity="0.5"/>
   <circle cx="760" cy="640" r="62" fill="none" stroke="#8A6A2A" stroke-width="0.4" opacity="0.4"/>
   <circle cx="760" cy="640" r="88" fill="none" stroke="#8A6A2A" stroke-width="0.4" opacity="0.3"/>
-
-  <!-- 太阳光晕 -->
   <circle class="sun-halo" cx="760" cy="640" r="26" fill="#F4E4C1" filter="url(#sunHalo)"/>
-  <!-- 太阳本体 -->
   <circle class="sun-core" cx="760" cy="640" r="10" fill="url(#sunGrad)"/>
   <circle cx="760" cy="640" r="4" fill="#F4E4C1"/>
-
-  <!-- 行星一（内轨道） -->
-  <g class="orbit-a">
-    <circle cx="798" cy="640" r="3" fill="#E8D4AA"/>
-  </g>
-
-  <!-- 行星二（中轨道） -->
-  <g class="orbit-b">
-    <circle cx="822" cy="640" r="2.5" fill="#C49A6A"/>
-  </g>
-
-  <!-- 行星三（外轨道） -->
-  <g class="orbit-c">
-    <circle cx="848" cy="640" r="2" fill="#B8922A"/>
-  </g>
+  <g class="orbit-a"><circle cx="798" cy="640" r="3" fill="#E8D4AA"/></g>
+  <g class="orbit-b"><circle cx="822" cy="640" r="2.5" fill="#C49A6A"/></g>
+  <g class="orbit-c"><circle cx="848" cy="640" r="2" fill="#B8922A"/></g>
 </g>
 
-<!-- 分隔 02 -->
 <line class="rule-grow d32" x1="480" y1="930" x2="850" y2="930" stroke="#8A6A2A" stroke-width="0.8"/>
 <line class="rule-grow d32" x1="480" y1="930" x2="110" y2="930" stroke="#8A6A2A" stroke-width="0.8"/>
 <use href="#vol" x="480" y="930" transform="translate(480,930) scale(0.85)"/>
 
-<!-- ═══════════════════════════════════════════════
-     CHAPTER Ⅱ · CRAFT — Discobolus
-     ═══════════════════════════════════════════════ -->
-<text class="fade-in d34" x="110" y="992"
-      font-family="Cinzel, Trajan Pro, Times New Roman, serif"
-      font-size="40" fill="#B8922A" letter-spacing="2">Ⅱ</text>
-<text class="fade-in d35" x="172" y="982"
-      font-family="Cinzel, Trajan Pro, Times New Roman, serif"
-      font-size="11" fill="#8A6A2A" letter-spacing="5">W H A T  I  C A R E  A B O U T</text>
+<!-- CHAPTER Ⅱ -->
+<text class="fade-in d34" x="110" y="992" font-family="Cinzel, Trajan Pro, Times New Roman, serif" font-size="40" fill="#B8922A" letter-spacing="2">Ⅱ</text>
+<text class="fade-in d35" x="172" y="982" font-family="Cinzel, Trajan Pro, Times New Roman, serif" font-size="11" fill="#8A6A2A" letter-spacing="5">W H A T  I  C A R E  A B O U T</text>
 
 <g class="rise-in d37">
   <text x="110" y="1050" font-family="Cinzel, Trajan Pro, Times New Roman, serif" font-size="18" fill="#8B2A2A">Ⅰ</text>
@@ -381,46 +325,78 @@
   </text>
 </g>
 
-<!-- 掷铁饼者（右侧） -->
-<g class="fade-in d37" transform="translate(770,1190)">
-  <!-- 光扫 -->
-  <ellipse class="statue-light" cx="0" cy="20" rx="70" ry="100" fill="url(#sweepGrad)" opacity="0.6" pointer-events="none"/>
+<!-- ═══ 掷铁饼者 · 体块化 ═══ -->
+<g class="fade-in d37" transform="translate(760,1200)">
+  <ellipse class="statue-light" cx="0" cy="15" rx="100" ry="130" fill="url(#sweepGrad)" opacity="0.45"/>
 
-  <g class="discobolus" stroke="#E8D4AA" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
-    <!-- 头部 -->
-    <circle cx="0" cy="-58" r="9"/>
-    <!-- 躯干前倾曲线 -->
-    <path d="M 0 -49 Q -8 -20 6 2"/>
-    <!-- 前腿（弓步向前） -->
-    <path d="M 6 2 L -14 40 L -26 64"/>
-    <!-- 后腿（向后伸展） -->
-    <path d="M 6 2 L 34 34 L 52 56"/>
-    <!-- 前伸手臂 -->
-    <path d="M -2 -30 Q 22 -36 42 -20"/>
-    <!-- 后拉手臂 -->
-    <path d="M 0 -35 Q -22 -46 -42 -32"/>
-    <!-- 铁饼（后手位置） -->
-    <circle class="disc-rim" cx="-52" cy="-38" r="10"/>
-    <circle cx="-52" cy="-38" r="3" fill="#B8922A"/>
-    <!-- 基座阴影 -->
-    <path d="M -30 66 L 60 66" stroke="#8A6A2A" stroke-width="0.6" opacity="0.5"/>
+  <g class="discobolus">
+    <!-- 地面阴影 -->
+    <ellipse cx="-5" cy="102" rx="58" ry="6" fill="#0D0B08" opacity="0.9"/>
+
+    <!-- 左腿（向后伸展，脚尖点地） -->
+    <path d="M 0 24 Q -16 34 -32 44 Q -45 55 -58 66 L -55 72 Q -41 61 -27 50 Q -11 40 4 30 Z"
+          fill="url(#limbWarm)" stroke="#8A6A2A" stroke-width="0.5"/>
+    <path d="M -2 27 Q -17 37 -31 47 Q -44 58 -55 68"
+          fill="none" stroke="#F4E4C1" stroke-width="0.9" opacity="0.45"/>
+
+    <!-- 右腿（支撑，弯曲） -->
+    <path d="M 10 22 Q 24 38 33 56 Q 38 78 36 98 L 48 99 Q 48 76 42 52 Q 33 33 19 18 Z"
+          fill="url(#limbWarm)" stroke="#8A6A2A" stroke-width="0.5"/>
+    <path d="M 14 25 Q 27 40 36 58 Q 41 79 39 97"
+          fill="none" stroke="#F4E4C1" stroke-width="0.9" opacity="0.5"/>
+    <!-- 右腿肌肉暗示 -->
+    <path d="M 20 40 Q 30 50 34 62" fill="none" stroke="#4A3A1A" stroke-width="0.6" opacity="0.5"/>
+
+    <!-- 躯干（前倾扭转） -->
+    <path d="M -26 -26 Q -16 -6 -6 10 Q 2 22 12 30 L 22 22 Q 12 14 4 0 Q -4 -16 -12 -30 Z"
+          fill="url(#torsoGrad)" stroke="#8A6A2A" stroke-width="0.6"/>
+    <!-- 胸廓高光 -->
+    <path d="M -20 -20 Q -12 -4 -4 8" fill="none" stroke="#E8D4AA" stroke-width="1" opacity="0.4"/>
+    <!-- 腹肌暗示 -->
+    <path d="M -6 6 Q 0 12 6 18" fill="none" stroke="#4A3A1A" stroke-width="0.6" opacity="0.5"/>
+
+    <!-- 左臂（下垂至膝） -->
+    <path d="M -28 -18 Q -26 0 -20 14 Q -14 27 -2 36 L 5 30 Q -6 22 -12 10 Q -18 -3 -20 -16 Z"
+          fill="url(#limbWarm)" stroke="#8A6A2A" stroke-width="0.5"/>
+    <path d="M -24 -14 Q -22 2 -16 15" fill="none" stroke="#F4E4C1" stroke-width="0.8" opacity="0.4"/>
+
+    <!-- 右臂（后上举持饼） -->
+    <path d="M -4 -30 Q 12 -38 28 -46 Q 42 -54 54 -62 L 58 -56 Q 46 -47 32 -39 Q 16 -31 0 -23 Z"
+          fill="url(#limbWarm)" stroke="#8A6A2A" stroke-width="0.5"/>
+    <path d="M 0 -27 Q 15 -35 30 -43 Q 43 -51 54 -59"
+          fill="none" stroke="#F4E4C1" stroke-width="0.9" opacity="0.55"/>
+    <!-- 肩部三角肌 -->
+    <ellipse cx="-2" cy="-30" rx="6" ry="5" fill="url(#limbWarm)" stroke="#8A6A2A" stroke-width="0.4"/>
+
+    <!-- 铁饼 -->
+    <g transform="rotate(-32 66 -64)">
+      <ellipse cx="66" cy="-64" rx="16" ry="7.5" fill="url(#discGrad)" stroke="#E8D4AA" stroke-width="0.8"/>
+      <ellipse class="disc-rim" cx="66" cy="-64" rx="11" ry="5" fill="none" stroke="#5A4418" stroke-width="0.6" opacity="0.7"/>
+      <circle cx="66" cy="-64" r="2.2" fill="#F4E4C1"/>
+    </g>
+
+    <!-- 颈部 -->
+    <path d="M -24 -40 L -18 -27 L -13 -28 L -19 -42 Z" fill="url(#limbWarm)" stroke="#8A6A2A" stroke-width="0.4"/>
+
+    <!-- 头部（转向铁饼方向） -->
+    <ellipse cx="-26" cy="-50" rx="9" ry="10.5" fill="url(#headGrad)" stroke="#8A6A2A" stroke-width="0.6"/>
+    <!-- 面部受光侧 -->
+    <path d="M -20 -54 Q -16 -50 -19 -44" fill="none" stroke="#F4E4C1" stroke-width="0.9" opacity="0.5"/>
+    <!-- 头发体积 -->
+    <path d="M -34 -56 Q -33 -63 -26 -62 Q -19 -61 -18 -55 Q -22 -58 -28 -57 Q -32 -56 -34 -56 Z"
+          fill="#3A2A0A" opacity="0.9"/>
+    <!-- 眼窝暗示 -->
+    <ellipse cx="-21" cy="-52" rx="2" ry="1.2" fill="#3A2A0A" opacity="0.7"/>
   </g>
 </g>
 
-<!-- 分隔 03 -->
 <line class="rule-grow d47" x1="480" y1="1470" x2="850" y2="1470" stroke="#8A6A2A" stroke-width="0.8"/>
 <line class="rule-grow d47" x1="480" y1="1470" x2="110" y2="1470" stroke="#8A6A2A" stroke-width="0.8"/>
 <use href="#vol" x="480" y="1470" transform="translate(480,1470) scale(0.85)"/>
 
-<!-- ═══════════════════════════════════════════════
-     CHAPTER Ⅲ · ON AI — Computer + Algorithm
-     ═══════════════════════════════════════════════ -->
-<text class="fade-in d49" x="110" y="1532"
-      font-family="Cinzel, Trajan Pro, Times New Roman, serif"
-      font-size="40" fill="#B8922A" letter-spacing="2">Ⅲ</text>
-<text class="fade-in d50" x="172" y="1522"
-      font-family="Cinzel, Trajan Pro, Times New Roman, serif"
-      font-size="11" fill="#8A6A2A" letter-spacing="5">O N  A I</text>
+<!-- CHAPTER Ⅲ -->
+<text class="fade-in d49" x="110" y="1532" font-family="Cinzel, Trajan Pro, Times New Roman, serif" font-size="40" fill="#B8922A" letter-spacing="2">Ⅲ</text>
+<text class="fade-in d50" x="172" y="1522" font-family="Cinzel, Trajan Pro, Times New Roman, serif" font-size="11" fill="#8A6A2A" letter-spacing="5">O N  A I</text>
 
 <text class="fade-in d52" font-family="Cormorant Garamond, Garamond, Georgia, serif" font-size="17" fill="#E8D4AA">
   <tspan x="110" y="1580">Neither reverence nor avoidance. I deploy AI in live environments —</tspan>
@@ -430,74 +406,49 @@
   <tspan x="110" y="1684">that was previously invisible.</tspan>
 </text>
 
-<!-- 电脑 + 算法（右侧） -->
 <g class="fade-in d56" transform="translate(770,1640)">
-  <!-- 显示器外框 -->
-  <rect x="-70" y="-55" width="140" height="90" rx="4"
-        fill="#1A1408" stroke="#8A6A2A" stroke-width="1" opacity="0.95"/>
-  <!-- 屏幕内发光 -->
-  <rect class="screen-glow" x="-62" y="-47" width="124" height="74"
-        fill="#0D0B08" stroke="#B8922A" stroke-width="0.4" opacity="0.6"/>
-  <!-- 底座 -->
+  <rect x="-70" y="-55" width="140" height="90" rx="4" fill="#1A1408" stroke="#8A6A2A" stroke-width="1" opacity="0.95"/>
+  <rect class="screen-glow" x="-62" y="-47" width="124" height="74" fill="#0D0B08" stroke="#B8922A" stroke-width="0.4" opacity="0.6"/>
   <rect x="-18" y="35" width="36" height="4" fill="#8A6A2A" opacity="0.7"/>
   <rect x="-38" y="39" width="76" height="3" fill="#8A6A2A" opacity="0.5"/>
-
-  <!-- 神经网络连线 -->
   <g stroke="#8A6A2A" stroke-width="0.5" fill="none" opacity="0.7">
-    <!-- 第一层 → 第二层 -->
     <line class="data-flow f1" x1="-38" y1="-30" x2="-6" y2="-30"/>
     <line class="data-flow f2" x1="-38" y1="-30" x2="-6" y2="-10"/>
     <line class="data-flow f3" x1="-38" y1="-10" x2="-6" y2="-30"/>
     <line class="data-flow f4" x1="-38" y1="-10" x2="-6" y2="-10"/>
     <line class="data-flow f5" x1="-38" y1="-10" x2="-6" y2="8"/>
     <line class="data-flow f6" x1="-38" y1="8" x2="-6" y2="-10"/>
-    <!-- 第二层 → 输出 -->
     <line class="data-flow f1" x1="-6" y1="-30" x2="30" y2="-10"/>
     <line class="data-flow f3" x1="-6" y1="-10" x2="30" y2="-10"/>
     <line class="data-flow f5" x1="-6" y1="8" x2="30" y2="-10"/>
   </g>
-
-  <!-- 节点 -->
   <g fill="#E8D4AA">
-    <!-- 第一层（输入） -->
     <circle class="nn-node n1" cx="-38" cy="-30" r="2.5"/>
     <circle class="nn-node n2" cx="-38" cy="-10" r="2.5"/>
     <circle class="nn-node n3" cx="-38" cy="8" r="2.5"/>
-    <!-- 第二层（隐藏） -->
     <circle class="nn-node n4" cx="-6" cy="-30" r="2.5"/>
     <circle class="nn-node n5" cx="-6" cy="-10" r="2.5"/>
     <circle class="nn-node n6" cx="-6" cy="8" r="2.5"/>
-    <!-- 输出层 -->
     <circle class="nn-node n7" cx="30" cy="-10" r="3" fill="#B8922A"/>
   </g>
-
-  <!-- 电源指示灯 -->
   <circle class="nn-node n8" cx="55" cy="42" r="1.5" fill="#B8922A"/>
 </g>
 
 <text class="fade-in d59" font-family="Cormorant Garamond, Garamond, Georgia, serif" font-size="21" fill="#E8D4AA" font-style="italic">
   <textPath href="#arc" startOffset="50%" text-anchor="middle">“ AI amplifies judgment; it does not replace it. ”</textPath>
 </text>
-
 <text class="fade-in d59" font-family="Cormorant Garamond, Garamond, Georgia, serif" font-size="17" fill="#C49A6A" font-style="italic">
   <tspan x="110" y="1798">Taking the black box apart until model behavior becomes</tspan>
   <tspan x="110" y="1824">legible, debuggable, and worthy of trust.</tspan>
 </text>
 
-<!-- 分隔 04 -->
 <line class="rule-grow d60" x1="480" y1="1870" x2="850" y2="1870" stroke="#8A6A2A" stroke-width="0.8"/>
 <line class="rule-grow d60" x1="480" y1="1870" x2="110" y2="1870" stroke="#8A6A2A" stroke-width="0.8"/>
 <use href="#vol" x="480" y="1870" transform="translate(480,1870) scale(0.85)"/>
 
-<!-- ═══════════════════════════════════════════════
-     CHAPTER Ⅳ · BUILDS — Climber
-     ═══════════════════════════════════════════════ -->
-<text class="fade-in d62" x="110" y="1932"
-      font-family="Cinzel, Trajan Pro, Times New Roman, serif"
-      font-size="40" fill="#B8922A" letter-spacing="2">Ⅳ</text>
-<text class="fade-in d63" x="172" y="1922"
-      font-family="Cinzel, Trajan Pro, Times New Roman, serif"
-      font-size="11" fill="#8A6A2A" letter-spacing="5">S E L E C T E D  B U I L D S</text>
+<!-- CHAPTER Ⅳ -->
+<text class="fade-in d62" x="110" y="1932" font-family="Cinzel, Trajan Pro, Times New Roman, serif" font-size="40" fill="#B8922A" letter-spacing="2">Ⅳ</text>
+<text class="fade-in d63" x="172" y="1922" font-family="Cinzel, Trajan Pro, Times New Roman, serif" font-size="11" fill="#8A6A2A" letter-spacing="5">S E L E C T E D  B U I L D S</text>
 
 <g class="fade-in d65" font-family="Cormorant Garamond, Garamond, Georgia, serif" font-size="16">
   <text x="110" y="1972" fill="#8A6A2A" font-size="11" letter-spacing="1">№01</text>
@@ -520,35 +471,90 @@
   <text x="500" y="2182" fill="#C49A6A" font-style="italic" font-size="14">AI-assisted development</text>
 </g>
 
-<!-- 登山小人（右侧） -->
-<g class="fade-in d66" transform="translate(770,2100)">
-  <!-- 山峰轮廓 -->
-  <g stroke="#8A6A2A" stroke-width="0.7" fill="none" opacity="0.7">
-    <path d="M -70 80 L -30 30 L -10 45 L 30 -20 L 50 0 L 80 -50" stroke-linejoin="round"/>
-    <!-- 路径虚线 -->
-    <path class="path-dash" d="M -70 80 L -30 30 L -10 45 L 30 -20 L 50 0 L 80 -50"
-          stroke="#B8922A" stroke-width="1.2"/>
+<!-- ═══ 攀岩者 · 体块化 ═══ -->
+<g class="fade-in d66" transform="translate(770,2110)">
+  <!-- 悬崖：不规则岩壁体块 -->
+  <g>
+    <path d="M -78 88 L -60 38 L -48 52 L -32 4 L -18 20 L 0 -22 L 16 -6 L 34 -46 L 50 -28 L 64 6 L 78 88 Z"
+          fill="url(#rockGrad)" stroke="#8A6A2A" stroke-width="0.9" opacity="0.98"/>
+    <!-- 岩壁受光面 -->
+    <path d="M 0 -22 L 16 -6 L 34 -46 L 50 -28 L 64 6 L 58 6 L 46 -24 L 32 -42 L 14 -2 L 2 -18 Z"
+          fill="#5A4418" opacity="0.45"/>
+    <!-- 岩壁纹理与裂隙 -->
+    <path d="M -52 62 L -42 46 M -22 32 L -12 16 M 18 -10 L 28 -26 M 42 22 L 52 6"
+          stroke="#8A6A2A" stroke-width="0.5" opacity="0.55"/>
+    <!-- 岩点凸起 -->
+    <ellipse cx="-40" cy="42" rx="6" ry="3" fill="#4A3A1A" stroke="#8A6A2A" stroke-width="0.4" opacity="0.8"/>
+    <ellipse cx="-24" cy="-2" rx="5" ry="2.5" fill="#4A3A1A" stroke="#8A6A2A" stroke-width="0.4" opacity="0.8"/>
+    <ellipse cx="12" cy="-16" rx="5" ry="2.5" fill="#4A3A1A" stroke="#8A6A2A" stroke-width="0.4" opacity="0.8"/>
   </g>
-  <!-- 峰顶光点 -->
-  <circle class="summit-light" cx="80" cy="-50" r="3" fill="#F4E4C1"/>
-  <circle class="summit-light" cx="80" cy="-50" r="8" fill="#F4E4C1" opacity="0.3" filter="url(#sunHalo)"/>
 
-  <!-- 攀登者（位于第一峰顶附近） -->
-  <g transform="translate(-30, 30)">
-    <g class="climber">
-      <!-- 头部 -->
-      <circle cx="0" cy="-18" r="4" fill="none" stroke="#E8D4AA" stroke-width="1.3"/>
-      <!-- 躯干（前倾） -->
-      <line x1="0" y1="-14" x2="3" y2="0" stroke="#E8D4AA" stroke-width="1.3"/>
-      <!-- 前腿 -->
-      <line x1="3" y1="0" x2="10" y2="8" stroke="#E8D4AA" stroke-width="1.3"/>
-      <!-- 后腿 -->
-      <line x1="3" y1="0" x2="-4" y2="8" stroke="#E8D4AA" stroke-width="1.3"/>
-      <!-- 前臂（伸向前方） -->
-      <line x1="0" y1="-9" x2="8" y2="-14" stroke="#E8D4AA" stroke-width="1.3"/>
-      <!-- 后臂（向后） -->
-      <line x1="0" y1="-9" x2="-8" y2="-6" stroke="#E8D4AA" stroke-width="1.3"/>
-    </g>
+  <!-- 峰顶光 -->
+  <circle class="summit-light" cx="34" cy="-46" r="4" fill="#F4E4C1"/>
+  <circle class="summit-light" cx="34" cy="-46" r="13" fill="#F4E4C1" opacity="0.22" filter="url(#sunHalo)"/>
+
+  <!-- 攀登者本体 -->
+  <g class="climber" transform="translate(-4, -10)">
+
+    <!-- 动力绳：从腰部垂下，微摆 -->
+    <path class="rope-sway" d="M 4 6 Q 12 28 8 50 Q 6 66 16 80"
+          fill="none" stroke="#C49A6A" stroke-width="1.3" opacity="0.85"/>
+
+    <!-- 背包（体块 + 高光） -->
+    <rect x="5" y="-24" width="15" height="21" rx="3.5"
+          fill="url(#packGrad)" stroke="#8A6A2A" stroke-width="0.5"/>
+    <line x1="7" y1="-19" x2="18" y2="-19" stroke="#3A2A0A" stroke-width="0.6"/>
+    <line x1="7" y1="-12" x2="18" y2="-12" stroke="#3A2A0A" stroke-width="0.6"/>
+    <path d="M 8 -22 Q 8 -6 10 4" fill="none" stroke="#E8D4AA" stroke-width="0.6" opacity="0.4"/>
+
+    <!-- 右腿（蹬下方岩点） -->
+    <path d="M 2 -2 Q 10 8 17 19 L 24 15 Q 17 4 8 -6 Z"
+          fill="url(#limbWarm)" stroke="#8A6A2A" stroke-width="0.45"/>
+    <path d="M 5 0 Q 12 9 18 18" fill="none" stroke="#F4E4C1" stroke-width="0.7" opacity="0.45"/>
+    <!-- 右攀岩鞋 -->
+    <path d="M 17 19 L 26 15 L 28 19 L 18 24 Z" fill="#3A2A0A" stroke="#8A6A2A" stroke-width="0.45"/>
+
+    <!-- 左腿（高位蹬点） -->
+    <path d="M -2 -4 Q -8 6 -13 17 L -6 20 Q -2 9 4 0 Z"
+          fill="url(#limbWarm)" stroke="#8A6A2A" stroke-width="0.45"/>
+    <path d="M -1 -2 Q -6 7 -11 16" fill="none" stroke="#F4E4C1" stroke-width="0.7" opacity="0.45"/>
+    <!-- 左攀岩鞋 -->
+    <path d="M -13 17 L -19 21 L -16 25 L -10 21 Z" fill="#3A2A0A" stroke="#8A6A2A" stroke-width="0.45"/>
+
+    <!-- 躯干（贴壁侧身） -->
+    <path d="M -7 -34 Q -2 -18 1 -6 Q 4 3 8 7 L 13 2 Q 10 -4 7 -15 Q 3 -28 -2 -36 Z"
+          fill="url(#torsoGrad)" stroke="#8A6A2A" stroke-width="0.55"/>
+    <path d="M -4 -28 Q 0 -14 2 -4" fill="none" stroke="#E8D4AA" stroke-width="0.8" opacity="0.35"/>
+
+    <!-- 右臂（侧向抓点） -->
+    <path d="M -3 -32 Q -7 -19 -11 -9 Q -13 -3 -15 1 L -10 3 Q -7 -3 -5 -9 Q -3 -19 1 -30 Z"
+          fill="url(#limbWarm)" stroke="#8A6A2A" stroke-width="0.45"/>
+    <path d="M -1 -30 Q -5 -18 -9 -8" fill="none" stroke="#F4E4C1" stroke-width="0.7" opacity="0.45"/>
+    <!-- 右手手套 -->
+    <circle cx="-13" cy="2" r="2.8" fill="#3A2A0A" stroke="#8A6A2A" stroke-width="0.45"/>
+
+    <!-- 左臂（向上抓高岩点） -->
+    <path d="M -7 -34 Q -15 -42 -23 -48 Q -29 -52 -33 -54 L -31 -49 Q -27 -45 -21 -41 Q -13 -35 -5 -29 Z"
+          fill="url(#limbWarm)" stroke="#8A6A2A" stroke-width="0.45"/>
+    <path d="M -9 -33 Q -17 -41 -24 -47" fill="none" stroke="#F4E4C1" stroke-width="0.8" opacity="0.5"/>
+    <!-- 左手手套 -->
+    <circle cx="-32" cy="-53" r="2.8" fill="#3A2A0A" stroke="#8A6A2A" stroke-width="0.45"/>
+
+    <!-- 头部（侧向观察） -->
+    <ellipse cx="-8" cy="-42" rx="7.5" ry="8" fill="url(#headGrad)" stroke="#8A6A2A" stroke-width="0.5"/>
+    <!-- 攀登头盔 -->
+    <path d="M -15 -44 Q -15 -52 -8 -52 Q -1 -52 -1 -44 L -3 -42 Q -3 -49 -8 -49 Q -13 -49 -13 -42 Z"
+          fill="#B8922A" stroke="#E8D4AA" stroke-width="0.45"/>
+    <!-- 头灯 -->
+    <circle cx="-13" cy="-48" r="1.6" fill="#F4E4C1"/>
+    <circle cx="-13" cy="-48" r="3.5" fill="#F4E4C1" opacity="0.3"/>
+
+    <!-- 安全带（腰带 + 腿环） -->
+    <path d="M -3 0 Q 4 2 10 1" fill="none" stroke="#B8922A" stroke-width="2" opacity="0.85"/>
+    <path d="M 2 1 Q 6 6 4 10" fill="none" stroke="#B8922A" stroke-width="1.5" opacity="0.75"/>
+    <path d="M -2 -2 Q -6 4 -8 9" fill="none" stroke="#B8922A" stroke-width="1.5" opacity="0.75"/>
+    <!-- 安全锁扣 -->
+    <circle cx="4" cy="5" r="1.6" fill="none" stroke="#E8D4AA" stroke-width="0.6"/>
   </g>
 </g>
 
@@ -560,7 +566,6 @@
   <text x="260" y="2294" font-family="Cormorant Garamond, Garamond, Georgia, serif" font-size="15" fill="#C49A6A" font-style="italic">and benchmarks featured on CCTV.</text>
 </g>
 
-<!-- 十个项目点 -->
 <g fill="#B8922A">
   <circle class="proj-dot p1" cx="620" cy="2250" r="3"/>
   <circle class="proj-dot p2" cx="668" cy="2250" r="3"/>
@@ -574,22 +579,14 @@
   <circle class="proj-dot p10" cx="812" cy="2300" r="3"/>
 </g>
 
-<!-- Footer 装饰 -->
 <line x1="340" y1="2350" x2="620" y2="2350" stroke="#8A6A2A" stroke-width="0.5" opacity="0.4"/>
 <circle class="flow-dot" cx="480" cy="2350" r="1.8" fill="#E8D4AA"/>
 <rect class="footer-orn" x="476" y="2346" width="8" height="8" transform="rotate(45 480 2350)" fill="#B8922A"/>
 
-<!-- 收束 -->
 <line x1="180" y1="2400" x2="780" y2="2400" stroke="url(#rule)" stroke-width="0.8" opacity="0.7"/>
 <use href="#vol" x="480" y="2400" transform="translate(480,2400) scale(1.1)"/>
-<text class="fade-in d72" x="480" y="2455" text-anchor="middle"
-      font-family="Cormorant Garamond, Garamond, Georgia, serif"
-      font-size="17" fill="#B8922A" font-style="italic" letter-spacing="1">From the one who does the work — to the one who defines how the work is done.</text>
-<text class="fade-in d76" x="480" y="2497" text-anchor="middle"
-      font-family="Cinzel, Trajan Pro, Times New Roman, serif"
-      font-size="11" fill="#8A6A2A" letter-spacing="6">LONG-TERMISM · COMPOUNDING · GROWTH</text>
-<text class="fade-in d80" x="480" y="2545" text-anchor="middle"
-      font-family="Cinzel, Trajan Pro, Times New Roman, serif"
-      font-size="10" fill="#8A6A2A" letter-spacing="4">HAPPY-MOMO.GITHUB.IO</text>
+<text class="fade-in d72" x="480" y="2455" text-anchor="middle" font-family="Cormorant Garamond, Garamond, Georgia, serif" font-size="17" fill="#B8922A" font-style="italic" letter-spacing="1">From the one who does the work — to the one who defines how the work is done.</text>
+<text class="fade-in d76" x="480" y="2497" text-anchor="middle" font-family="Cinzel, Trajan Pro, Times New Roman, serif" font-size="11" fill="#8A6A2A" letter-spacing="6">LONG-TERMISM · COMPOUNDING · GROWTH</text>
+<text class="fade-in d80" x="480" y="2545" text-anchor="middle" font-family="Cinzel, Trajan Pro, Times New Roman, serif" font-size="10" fill="#8A6A2A" letter-spacing="4">HAPPY-MOMO.GITHUB.IO</text>
 
 </svg>
