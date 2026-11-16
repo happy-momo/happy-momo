@@ -1,0 +1,48 @@
+name: snapshot-stats
+
+on:
+  # refresh stats every 2 hours
+  schedule:
+    - cron: "17 */2 * * *"
+  workflow_dispatch:
+  # also refresh immediately on push so the snapshots always exist
+  push:
+    branches:
+      - main
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # GitHub's ubuntu runners (US/Virginia) can reach the stat services,
+      # so we snapshot their SVGs into the repo. The README then serves them
+      # via cdn.jsdelivr.net, which is reachable from networks where
+      # vercel.app / raw.githubusercontent are blocked.
+      - name: Snapshot stats SVGs
+        run: |
+          mkdir -p dist
+
+          curl -fsSL --max-time 30 \
+            "https://github-readme-stats.vercel.app/api?username=happy-momo&show_icons=true&bg_color=0D0B08&title_color=E8D4AA&text_color=B8922A&icon_color=E8D4AA&border_color=8A6A2A&hide_border=false&count_private=true" \
+            -o dist/github-stats.svg
+
+          curl -fsSL --max-time 30 \
+            "https://github-readme-stats.vercel.app/api/top-langs/?username=happy-momo&layout=compact&bg_color=0D0B08&title_color=E8D4AA&text_color=B8922A&border_color=8A6A2A&hide_border=false&langs_count=8" \
+            -o dist/top-langs.svg
+
+          ls -la dist/
+
+      - name: Commit snapshots
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dist/github-stats.svg dist/top-langs.svg
+          git diff --cached --quiet || git commit -m "chore(stats): refresh stat snapshot SVGs"
+          git push
