@@ -33,17 +33,34 @@ jobs:
 
           fetch() {
             local url="$1" out="$2"
-            echo "== fetching: $out"
+            echo "== fetching: $out  <=  $url"
             local tmp="dist/${out}.tmp"
-            curl -sSL --max-time 40 --retry 2 -w "HTTP %{http_code} size=%{size_download} time=%{time_total}s\n" \
-              "$url" -o "$tmp"
+            curl -sSL --max-time 40 --retry 2 \
+              -w "curl: HTTP %{http_code} size=%{size_download} exit=%{errormsg}\n" \
+              "$url" -o "$tmp" 2> /tmp/curlerr.txt
             local code=$?
+            echo "curl exit code = $code"
+            if [ $code -ne 0 ]; then
+              echo "--- curl stderr ---"; cat /tmp/curlerr.txt; echo "--- end stderr ---"
+            fi
             if [ $code -ne 0 ] || [ ! -s "$tmp" ]; then
-              echo "!! FAILED to fetch $out (curl exit $code)"
+              echo "!! FAILED to fetch $out"
+              echo "diag for $out:" >> dist/DIAG.txt
+              echo "curl exit $code" >> dist/DIAG.txt
+              cat /tmp/curlerr.txt >> dist/DIAG.txt
+              echo "$url" >> dist/DIAG.txt
+              echo "---" >> dist/DIAG.txt
               rm -f "$tmp"
               return 1
             fi
-            head -c 120 "$tmp" | grep -qE '<svg|<\?xml' || { echo "!! $out not a valid SVG:"; head -c 200 "$tmp"; rm -f "$tmp"; return 1; }
+            head -c 120 "$tmp" | grep -qE '<svg|<\?xml' || {
+              echo "!! $out not a valid SVG; first bytes:"; head -c 300 "$tmp"
+              echo "diag for $out:" >> dist/DIAG.txt
+              echo "non-SVG response" >> dist/DIAG.txt
+              head -c 300 "$tmp" >> dist/DIAG.txt
+              echo "---" >> dist/DIAG.txt
+              rm -f "$tmp"; return 1;
+            }
             mv "$tmp" "dist/${out}"
             echo "OK   $out -> $(wc -c < dist/${out}) bytes"
           }
@@ -57,8 +74,10 @@ jobs:
 
           echo "== dist contents:"
           ls -la dist/
-          # Fail the job only if neither snapshot was produced.
-          [ -f dist/github-stats.svg ] || [ -f dist/top-langs.svg ] || { echo "FATAL: no snapshots produced"; exit 1; }
+          # Never fail here: we want DIAG.txt committed to inspect later.
+          # The Commit step decides whether anything succeeded.
+          [ -f dist/github-stats.svg ] || [ -f dist/top-langs.svg ] || \
+            { echo "FATAL: no snapshots produced (diagnostics in dist/DIAG.txt)"; }
 
       - name: Commit snapshots
         shell: bash
