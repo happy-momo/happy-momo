@@ -21,53 +21,68 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # Probe candidate instances (runner is on a US vantage point),
-      # report which ones actually return a real SVG right now.
-      - name: Probe candidate instances from runner
+      # Keeps two SVG stat cards fresh in dist/. The README serves them via
+      # cdn.jsdelivr.net so they load even where vercel.app is blocked.
+      #
+      # As of Nov 2026 every public github-readme-stats instance (official
+      # vercel.app and the community forks) is down (DEPLOYMENT_PAUSED).
+      # This workflow auto-probes; the moment a candidate returns a real SVG
+      # again it snapshots it. Until then it commits nothing, so the README
+      # simply shows no card (and no stale/broken placeholder is served).
+      - name: Snapshot stats SVGs (probe until a live instance returns)
         shell: bash
         run: |
           set +e
-          rm -f dist/DIAG.txt
-          probe() {
-            local url="$1" tag="$2"
-            local tmp="dist/probe_${tag}.tmp"
-            code=$(curl -sSL --max-time 25 -w "%{http_code}" "$url" -o "$tmp" 2>/dev/null)
-            if [ "$code" = "200" ] && head -c 60 "$tmp" | grep -qE '<svg|<\?xml'; then
-              echo "ALIVE  $tag  HTTP $code  $(wc -c < "$tmp")B  $url" | tee -a dist/DIAG.txt
-            else
-              first=$(head -c 200 "$tmp" | tr -d '\n')
-              echo "DOWN   $tag  HTTP $code  $url" | tee -a dist/DIAG.txt
-              echo "       body: ${first:0:120}" | tee -a dist/DIAG.txt
+          mkdir -p dist
+
+          fetch() {
+            local out="$1" url="$2"
+            local tmp="dist/${out}.tmp"
+            local code
+            code=$(curl -sSL --max-time 30 --retry 2 \
+              -w "%{http_code}" "$url" -o "$tmp" 2>/dev/null)
+            ok=0
+            if [ "$code" = "200" ]; then
+              head -c 300 "$tmp" | grep -qiE '(<svg|<\\?xml)' && head -c 300 "$tmp" | grep -qi 'alt=' && ok=1
             fi
-            rm -f "$tmp"
+            if [ "$ok" != "1" ]; then
+              echo "skip ${out}: instance not serving a real stats SVG (HTTP ${code})"
+              rm -f "$tmp"
+              return 1
+            fi
+            # only keep the file if it is a genuine generated card
+            mv "$tmp" "dist/${out}"
+            echo "snapshotted ${out} from ${url} ($(wc -c < "dist/${out}")B)"
           }
 
-          probe "https://github-readme-stats.vercel.app/api?username=happy-momo" official
-          probe "https://github-readme-stats-git-fork.vercel.app/api?username=happy-momo" fork-vercel
-          probe "https://github-readme-stats.anuraghazra.dev/api?username=happy-momo" anuraghazra-dev
-          probe "https://github-readme-stats-cv.vercel.app/api?username=happy-momo" cv
-          probe "https://ght-opencommunity.vercel.app/api?username=happy-momo" opencommunity
-          probe "https://streak-stats.demolab.com/?user=happy-momo" streak-demo
+          # candidate stats-card instances, newest/self-hosted first
+          fetch github-stats.svg \
+            "https://github-readme-stats.vercel.app/api?username=happy-momo&show_icons=true&bg_color=0D0B08&title_color=E8D4AA&text_color=B8922A&icon_color=E8D4AA&border_color=8A6A2A&hide_border=false&count_private=true"
+          fetch github-stats.svg \
+            "https://github-readme-stats-git-fork.vercel.app/api?username=happy-momo&show_icons=true&bg_color=0D0B08&title_color=E8D4AA&text_color=B8922A&icon_color=E8D4AA&border_color=8A6A2A&hide_border=false&count_private=true"
+          fetch github-stats.svg \
+            "https://github-readme-stats.anuraghazra.dev/api?username=happy-momo&show_icons=true&bg_color=0D0B08&title_color=E8D4AA&text_color=B8922A&icon_color=E8D4AA&border_color=8A6A2A&hide_border=false&count_private=true"
 
-          echo "==== RESUMEN ===="
-          cat dist/DIAG.txt
+          fetch top-langs.svg \
+            "https://github-readme-stats.vercel.app/api/top-langs/?username=happy-momo&layout=compact&bg_color=0D0B08&title_color=E8D4AA&text_color=B8922A&border_color=8A6A2A&hide_border=false&langs_count=8"
+          fetch top-langs.svg \
+            "https://github-readme-stats-git-fork.vercel.app/api/top-langs/?username=happy-momo&layout=compact&bg_color=0D0B08&title_color=E8D4AA&text_color=B8922A&border_color=8A6A2A&hide_border=false&langs_count=8"
+          fetch top-langs.svg \
+            "https://github-readme-stats.anuraghazra.dev/api/top-langs/?username=happy-momo&layout=compact&bg_color=0D0B08&title_color=E8D4AA&text_color=B8922A&border_color=8A6A2A&hide_border=false&langs_count=8"
+
+          echo "== dist/ :"
+          ls -la dist/
 
       - name: Commit snapshots
         shell: bash
         run: |
           set +e
-          echo "== git diff --stat (before):"
-          git status --porcelain
-
-          # Mirrored token push so the bot's own commit does not retrigger pushes.
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A dist/
           if git diff --cached --quiet; then
-            echo "no changes to commit; done"
+            echo "no snapshot changes to commit; done"
           else
             git commit -m "chore(stats): refresh stat snapshot SVGs"
-            echo "== pushing..."
             git push origin HEAD:main
-            echo "== push exit: $?"
           fi
