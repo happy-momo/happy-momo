@@ -21,63 +21,36 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # GitHub's ubuntu runners (US/Virginia) can normally reach the stat
-      # services, so we snapshot their SVGs into the repo. The README then
-      # serves them via cdn.jsdelivr.net, which is reachable from networks
-      # where vercel.app / raw.githubusercontent are blocked.
-      - name: Snapshot stats SVGs
+      # Probe candidate instances (runner is on a US vantage point),
+      # report which ones actually return a real SVG right now.
+      - name: Probe candidate instances from runner
         shell: bash
         run: |
           set +e
-          mkdir -p dist
-
-          fetch() {
-            local url="$1" out="$2"
-            echo "== fetching: $out  <=  $url"
-            local tmp="dist/${out}.tmp"
-            curl -sSL --max-time 40 --retry 2 \
-              -w "curl: HTTP %{http_code} size=%{size_download} exit=%{errormsg}\n" \
-              "$url" -o "$tmp" 2> /tmp/curlerr.txt
-            local code=$?
-            echo "curl exit code = $code"
-            if [ $code -ne 0 ]; then
-              echo "--- curl stderr ---"; cat /tmp/curlerr.txt; echo "--- end stderr ---"
+          rm -f dist/DIAG.txt
+          probe() {
+            local url="$1" tag="$2"
+            local tmp="dist/probe_${tag}.tmp"
+            code=$(curl -sSL --max-time 25 -w "%{http_code}" "$url" -o "$tmp" 2>/dev/null)
+            if [ "$code" = "200" ] && head -c 60 "$tmp" | grep -qE '<svg|<\?xml'; then
+              echo "ALIVE  $tag  HTTP $code  $(wc -c < "$tmp")B  $url" | tee -a dist/DIAG.txt
+            else
+              first=$(head -c 200 "$tmp" | tr -d '\n')
+              echo "DOWN   $tag  HTTP $code  $url" | tee -a dist/DIAG.txt
+              echo "       body: ${first:0:120}" | tee -a dist/DIAG.txt
             fi
-            if [ $code -ne 0 ] || [ ! -s "$tmp" ]; then
-              echo "!! FAILED to fetch $out"
-              echo "diag for $out:" >> dist/DIAG.txt
-              echo "curl exit $code" >> dist/DIAG.txt
-              cat /tmp/curlerr.txt >> dist/DIAG.txt
-              echo "$url" >> dist/DIAG.txt
-              echo "---" >> dist/DIAG.txt
-              rm -f "$tmp"
-              return 1
-            fi
-            head -c 120 "$tmp" | grep -qE '<svg|<\?xml' || {
-              echo "!! $out not a valid SVG; first bytes:"; head -c 300 "$tmp"
-              echo "diag for $out:" >> dist/DIAG.txt
-              echo "non-SVG response" >> dist/DIAG.txt
-              head -c 300 "$tmp" >> dist/DIAG.txt
-              echo "---" >> dist/DIAG.txt
-              rm -f "$tmp"; return 1;
-            }
-            mv "$tmp" "dist/${out}"
-            echo "OK   $out -> $(wc -c < dist/${out}) bytes"
+            rm -f "$tmp"
           }
 
-          fetch \
-            "https://github-readme-stats.vercel.app/api?username=happy-momo&show_icons=true&bg_color=0D0B08&title_color=E8D4AA&text_color=B8922A&icon_color=E8D4AA&border_color=8A6A2A&hide_border=false&count_private=true" \
-            "github-stats.svg"
-          fetch \
-            "https://github-readme-stats.vercel.app/api/top-langs/?username=happy-momo&layout=compact&bg_color=0D0B08&title_color=E8D4AA&text_color=B8922A&border_color=8A6A2A&hide_border=false&langs_count=8" \
-            "top-langs.svg"
+          probe "https://github-readme-stats.vercel.app/api?username=happy-momo" official
+          probe "https://github-readme-stats-git-fork.vercel.app/api?username=happy-momo" fork-vercel
+          probe "https://github-readme-stats.anuraghazra.dev/api?username=happy-momo" anuraghazra-dev
+          probe "https://github-readme-stats-cv.vercel.app/api?username=happy-momo" cv
+          probe "https://ght-opencommunity.vercel.app/api?username=happy-momo" opencommunity
+          probe "https://streak-stats.demolab.com/?user=happy-momo" streak-demo
 
-          echo "== dist contents:"
-          ls -la dist/
-          # Never fail here: we want DIAG.txt committed to inspect later.
-          # The Commit step decides whether anything succeeded.
-          [ -f dist/github-stats.svg ] || [ -f dist/top-langs.svg ] || \
-            { echo "FATAL: no snapshots produced (diagnostics in dist/DIAG.txt)"; }
+          echo "==== RESUMEN ===="
+          cat dist/DIAG.txt
 
       - name: Commit snapshots
         shell: bash
