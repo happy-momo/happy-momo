@@ -29,7 +29,6 @@
   <a href="https://happy-momo.github.io/momo.github.io/">
     <img src="./assets/btn-site.svg" alt="Personal Site" />
   </a>
-  &nbsp;&nbsp;&nbsp;
   <a href="https://happy-momo.github.io/momo-projects.github.io/">
     <img src="./assets/btn-projects.svg" alt="Projects" />
   </a>
