@@ -21,28 +21,61 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # GitHub's ubuntu runners (US/Virginia) can reach the stat services,
-      # so we snapshot their SVGs into the repo. The README then serves them
-      # via cdn.jsdelivr.net, which is reachable from networks where
-      # vercel.app / raw.githubusercontent are blocked.
+      # GitHub's ubuntu runners (US/Virginia) can normally reach the stat
+      # services, so we snapshot their SVGs into the repo. The README then
+      # serves them via cdn.jsdelivr.net, which is reachable from networks
+      # where vercel.app / raw.githubusercontent are blocked.
       - name: Snapshot stats SVGs
+        shell: bash
         run: |
+          set +e
           mkdir -p dist
 
-          curl -fsSL --max-time 30 \
+          fetch() {
+            local url="$1" out="$2"
+            echo "== fetching: $out"
+            local tmp="dist/${out}.tmp"
+            curl -sSL --max-time 40 --retry 2 -w "HTTP %{http_code} size=%{size_download} time=%{time_total}s\n" \
+              "$url" -o "$tmp"
+            local code=$?
+            if [ $code -ne 0 ] || [ ! -s "$tmp" ]; then
+              echo "!! FAILED to fetch $out (curl exit $code)"
+              rm -f "$tmp"
+              return 1
+            fi
+            head -c 120 "$tmp" | grep -qE '<svg|<\?xml' || { echo "!! $out not a valid SVG:"; head -c 200 "$tmp"; rm -f "$tmp"; return 1; }
+            mv "$tmp" "dist/${out}"
+            echo "OK   $out -> $(wc -c < dist/${out}) bytes"
+          }
+
+          fetch \
             "https://github-readme-stats.vercel.app/api?username=happy-momo&show_icons=true&bg_color=0D0B08&title_color=E8D4AA&text_color=B8922A&icon_color=E8D4AA&border_color=8A6A2A&hide_border=false&count_private=true" \
-            -o dist/github-stats.svg
-
-          curl -fsSL --max-time 30 \
+            "github-stats.svg"
+          fetch \
             "https://github-readme-stats.vercel.app/api/top-langs/?username=happy-momo&layout=compact&bg_color=0D0B08&title_color=E8D4AA&text_color=B8922A&border_color=8A6A2A&hide_border=false&langs_count=8" \
-            -o dist/top-langs.svg
+            "top-langs.svg"
 
+          echo "== dist contents:"
           ls -la dist/
+          # Fail the job only if neither snapshot was produced.
+          [ -f dist/github-stats.svg ] || [ -f dist/top-langs.svg ] || { echo "FATAL: no snapshots produced"; exit 1; }
 
       - name: Commit snapshots
+        shell: bash
         run: |
+          set +e
+          echo "== git diff --stat (before):"
+          git status --porcelain
+
+          # Mirrored token push so the bot's own commit does not retrigger pushes.
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add dist/github-stats.svg dist/top-langs.svg
-          git diff --cached --quiet || git commit -m "chore(stats): refresh stat snapshot SVGs"
-          git push
+          git add -A dist/
+          if git diff --cached --quiet; then
+            echo "no changes to commit; done"
+          else
+            git commit -m "chore(stats): refresh stat snapshot SVGs"
+            echo "== pushing..."
+            git push origin HEAD:main
+            echo "== push exit: $?"
+          fi
