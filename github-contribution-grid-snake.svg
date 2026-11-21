@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 824 164" role="img" aria-label="Contribution snake placeholder">
+  <title>Contribution Snake — generating</title>
+  <desc>Warm oil-painting placeholder for the animated contribution snake. Will be replaced by the GitHub Action after first run.</desc>
+
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FDF6E3"/>
+      <stop offset="1" stop-color="#F7F1E3"/>
+    </linearGradient>
+
+    <linearGradient id="snake" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#B45309">
+        <animate attributeName="stop-color" values="#B45309;#D97706;#BE185D;#B45309" dur="5s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="0.5" stop-color="#D97706"/>
+      <stop offset="1" stop-color="#BE185D">
+        <animate attributeName="stop-color" values="#BE185D;#D97706;#B45309;#BE185D" dur="7s" repeatCount="indefinite"/>
+      </stop>
+    </linearGradient>
+
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="20"/>
+    </filter>
+
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="22"/>
+      <feColorMatrix type="matrix"
+          values="0 0 0 0 0.30
+                  0 0 0 0 0.22
+                  0 0 0 0 0.16
+                  0 0 0 0.04 0"/>
+    </filter>
+  </defs>
+
+  <rect width="824" height="164" fill="url(#sky)"/>
+
+  <g fill="#E8DCC8" opacity="0.6">
+    <rect x="34"  y="26" width="12" height="12" rx="2"/>
+    <rect x="50"  y="26" width="12" height="12" rx="2"/>
+    <rect x="66"  y="26" width="12" height="12" rx="2"/>
+    <rect x="82"  y="26" width="12" height="12" rx="2"/>
+    <rect x="98"  y="26" width="12" height="12" rx="2"/>
+    <rect x="34"  y="42" width="12" height="12" rx="2"/>
+    <rect x="50"  y="42" width="12" height="12" rx="2"/>
+    <rect x="66"  y="42" width="12" height="12" rx="2"/>
+    <rect x="82"  y="42" width="12" height="12" rx="2"/>
+    <rect x="98"  y="42" width="12" height="12" rx="2"/>
+    <rect x="34"  y="58" width="12" height="12" rx="2"/>
+    <rect x="50"  y="58" width="12" height="12" rx="2"/>
+    <rect x="66"  y="58" width="12" height="12" rx="2"/>
+    <rect x="82"  y="58" width="12" height="12" rx="2"/>
+    <rect x="98"  y="58" width="12" height="12" rx="2"/>
+  </g>
+
+  <g filter="url(#soft)">
+    <path pathLength="1" d="M 40 92 C 160 92, 200 48, 320 48 S 480 132, 600 132 S 760 48, 900 48 S 1060 132, 1200 132"
+          fill="none" stroke="url(#snake)" stroke-width="14" stroke-linecap="round"
+          stroke-dasharray="0.25 0.75" stroke-dashoffset="0" opacity="0.85">
+      <animate attributeName="stroke-dashoffset" values="0;-1" dur="5s" repeatCount="indefinite"/>
+    </path>
+  </g>
+  <path pathLength="1" d="M 40 92 C 160 92, 200 48, 320 48 S 480 132, 600 132 S 760 48, 900 48 S 1060 132, 1200 132"
+        fill="none" stroke="url(#snake)" stroke-width="5" stroke-linecap="round"
+        stroke-dasharray="0.25 0.75" stroke-dashoffset="0">
+    <animate attributeName="stroke-dashoffset" values="0;-1" dur="5s" repeatCount="indefinite"/>
+  </path>
+
+  <circle r="6" fill="#FFF7ED">
+    <animateMotion dur="5s" repeatCount="indefinite"
+        path="M 40 92 C 160 92, 200 48, 320 48 S 480 132, 600 132 S 760 48, 900 48 S 1060 132, 1200 132"/>
+  </circle>
+
+  <text x="412" y="150" text-anchor="middle"
+        font-family="'Courier New', monospace" font-size="11"
+        fill="#8C7B68" letter-spacing="3" opacity="0.8">
+    RUN THE SNAKE ACTION TO GENERATE LIVE CONTRIBUTION DATA
+  </text>
+
+  <rect width="824" height="164" filter="url(#grain)" opacity="0.35"/>
+</svg>
